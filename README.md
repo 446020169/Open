@@ -12,6 +12,7 @@
 |daily_use.py|日常函数调用，发送指令，日常使用|
 |config.ini|基础配置文件，连接桥梁，勿动勿删|
 |execute_program.py|脚本函数集合，执行程序，无需修改|
+
 可将daily_use.py重命名后多复制几份，分别处理不同的collection，但务必保证与其他三个文件在同一目录下。
 
 > **注意事项**  
