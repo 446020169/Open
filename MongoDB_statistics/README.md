@@ -1,8 +1,6 @@
 [TOC]
 
-# 说明文档
-
-## MongoDB常用数据统计脚本汇总
+# MongoDB日常数据统计(python_scripts)
 
 ### 一、前言
 

@@ -1,6 +1,4 @@
-# <span id="head1"> 说明文档</span>
-
-## <span id="head2"> MongoDB常用数据统计脚本汇总</span>
+# <span id="head2"> MongoDB日常数据统计(python_scripts)</span>
 
 ### <span id="head3"> 一、前言</span>
 
