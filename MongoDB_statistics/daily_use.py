@@ -24,10 +24,10 @@ db_collection='project_1009_limit1000'
 write_config(db_host,db_name,db_collection)
 
 #===========请在下面写出需要调用的函数及其参数============
-
 # 6.3 一个集合字段和多个普通字段的联合求和,并将结果保存至csv
 field_sum = "budget" # 求和字段
 field_sets = "topscopeclass2" # 集合字段
 fields = ["area","city"] # 列表可含N个普通字段
 csv_name = "test18" # csv的表名
 execute_program.query_sum3(field_sum,field_sets,fields,csv_name)
+
