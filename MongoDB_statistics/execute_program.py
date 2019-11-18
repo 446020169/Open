@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 from pymongo import MongoClient
-import csv,numpy,configparser
+import csv,numpy,configparser,os
 #============================勿动这个文件==============================
 #============================勿动这个文件==============================
 #============================勿动这个文件==============================
 
 # 连接MongoDB数据库中collection。
 def collect():
+    parent_dir = os.path.dirname(os.path.abspath(__file__))
     config = configparser.ConfigParser()
-    config.read('config.ini')
+    config.read(parent_dir + '/config.ini')
     db_host = config.get('mongo', 'host')
     db_name = config.get('mongo', 'dbname')
     db_collection = config.get('mongo', 'collection')
@@ -858,7 +859,6 @@ def del_field(columns):
         collect().update_many({"_id": item["_id"]}, {"$unset": dict})
     print("字段已删除完成")
 
-print("本程序不独立运行，仅作为函数仓库供其他程序调用")
-#==============================上面勿动================================
-#==============================上面勿动================================
-#==============================上面勿动================================
+#==============================以上勿动================================
+#==============================以上勿动================================
+#==============================以上勿动================================

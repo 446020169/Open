@@ -1,21 +1,26 @@
-# -*- coding: utf-8 -*-                                                       #|
-import configparser,execute_program                                           #|
-# 修改至配置文件                                                               #|
-def write_config(db_host,db_name,db_collection):                              #|
-    config = configparser.ConfigParser()                                      #|
-    config.read("config.ini")                                                 #|
-    config.set('mongo', 'host', db_host)                                      #|
-    config.set('mongo', 'dbname', db_name)                                    #|
-    config.set('mongo', 'collection', db_collection)                          #|
-    with open("config.ini","w") as f:                                         #|
-        config.write(f)                                                       #|
-        print("配置信息已更新")                                                #|
-#==============================上面勿动========================================#|
-
+# -*- coding: utf-8 -*-
+import configparser,os
+import execute_program
+# 修改至配置文件
+def write_config(db_host,db_name,db_collection):
+    parent_dir = os.path.dirname(os.path.abspath(__file__))
+    config = configparser.ConfigParser()
+    config.read(parent_dir + "/config.ini")
+    config.set("mongo", 'host', db_host)
+    config.set("mongo", 'dbname', db_name)
+    config.set("mongo", 'collection', db_collection)
+    with open(parent_dir + "/config.ini","w") as f:
+        config.write(f)
+        print("配置信息已更新")
+"""
+------------------------------------------------------------------------------
+                    上面勿动，请在下面填写配置|调用函数及参数
+------------------------------------------------------------------------------
+"""
 #=====请在这里修改需要操作的MongoDB服务器|数据库|表======
-db_host = "192.168.3.207:27082"
-db_name = "hanhongfei"
-db_collection = "project_1009_limit1000"
+db_host = '192.168.3.207:27082'
+db_name = 'hanhongfei'
+db_collection='project_1009_limit1000'
 write_config(db_host,db_name,db_collection)
 
 #===========请在下面写出需要调用的函数及其参数============
