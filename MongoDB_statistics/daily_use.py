@@ -11,7 +11,7 @@ def write_config(db_host,db_name,db_collection):
     config.set("mongo", 'collection', db_collection)
     with open(parent_dir + "/config.ini","w") as f:
         config.write(f)
-        print("配置信息已更新")
+        print("……连接MongoDB")
 """
 ------------------------------------------------------------------------------
                     上面勿动，请在下面填写配置|调用函数及参数
