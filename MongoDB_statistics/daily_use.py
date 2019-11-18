@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-                                                       #|
 import configparser,execute_program                                           #|
-# 修改至配置文件                                                               #|
+# 修改至配置文件                                                                #|
 def write_config(db_host,db_name,db_collection):                              #|
     config = configparser.ConfigParser()                                      #|
     config.read("config.ini")                                                 #|
@@ -9,8 +9,8 @@ def write_config(db_host,db_name,db_collection):                              #|
     config.set('mongo', 'collection', db_collection)                          #|
     with open("config.ini","w") as f:                                         #|
         config.write(f)                                                       #|
-        print("配置信息已更新")                                                #|
-#==============================上面勿动=======================================#|
+        print("配置信息已更新")                                                 #|
+#==============================上面勿动========================================#|
 
 #=====请在这里修改需要操作的MongoDB服务器|数据库|表======
 db_host = "192.168.3.207:27082"
