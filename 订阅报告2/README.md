@@ -19,26 +19,25 @@
 
 上周共为您推送招标信息908条，比上上周增加87条，数据如下：
 
-<center>招标信息数量统计</center>
+<p align="center"><font face="微软雅黑" color="black" size="4">招标信息数量统计</font></p>
 
 ![1](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/1.jpg)
 
 ### <span id="head3"> 2、各招标信息类型占比</span>
 
-<center>  各招标信息类型占比</center>
+<p align="center"><font face="微软雅黑" color="black" size="4">各招标信息类型占比</font></p>
 
 ![2](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/2.1.jpg)
 
 ### <span id="head4"> 3、各招标方式占比</span>
 
-<center>  各招标方式对比</center>
+<p align="center"><font face="微软雅黑" color="black" size="4">各招标方式对比</font></p>
 
 ![4](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/4.jpg)
 
+### <span id="head5"> 4、各订阅项目数据</span>
 
-### <span id="head5"> 4、各订阅项目数据概况</span>
-
-<center>  各订阅项目数据概况</center>
+<p align="center"><font face="微软雅黑" color="black" size="4">各订阅项目数据</font></p>
 
 ![3](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/3.3.jpg)
 
