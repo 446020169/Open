@@ -1,6 +1,6 @@
 - [ 剑鱼标讯订阅周报(11.11-11.17)](#head1)
 	- [ 1、数据总览](#head2)
-	- [ 2、各招标信息类型占比](#head3)
+	- [ 2、各信息类型占比](#head3)
 	- [ 3、各招标方式占比](#head4)
 	- [ 4、各订阅项目数据](#head5)
 	- [5、 我关注的项目动态](#head6)
@@ -24,31 +24,30 @@
 
 ![1](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/1.jpg)
 
-### <span id="head3"> 2、各招标信息类型占比</span>
+### <span id="head3"> 2、各信息类型占比</span>
 
-&emsp;&emsp;从上周为您推送的招标信息类型上看，拟建公告占比1.7%，预告公示占比1.7%，正在招标占比53.1%，开标结果占比32.0%，合同备案占比10.3%。  
+&emsp;&emsp;从上周为您推送的招标信息类型上看，拟建项目占比1.7%，招标预告占比1.7%，招标公告占比53.1%，招标结果占比32.0%，其他信息占比10.3%。  
 
 <p align="center"><font face="微软雅黑" color="black" size="4">各招标信息类型占比</font></p>
 
-![2](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/2.1.jpg)
+![2](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/2.2.jpg)
 
->其他包含：结果变更、验收、违规等
 
 ### <span id="head4"> 3、各招标方式占比</span>
 
-&emsp;&emsp;上周为您推送的招标公告中，公开招标占比69.9%，询价招标占比20.4%，竞谈招标占比6.4%，竞价招标占比1.7%，单一招标占比1.5%，邀标招标占比0.1%。
+&emsp;&emsp;上周为您推送的招标公告中，公开招标占比69.9%，询价采购占比20.4%，竞争性谈判占比6.4%，公开竞价占比1.7%，单一来源占比1.5%，邀请招标占比0.1%。
 
 <p align="center"><font face="微软雅黑" color="black" size="4">各招标方式对比</font></p>
 
-![4](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/4.jpg)
+![4](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/3.jpg)
 
 ### <span id="head5"> 4、各订阅项目数据</span>
 
-&emsp;&emsp;上周为您推送的招标项目中，洒水车项目最多，为503个，其后依次是垃圾车、清扫车、清洗车等项目，分别为407个、160个、125个，吸污车项目最少，为90个。
+&emsp;&emsp;上周为您推送的招标项目中，洒水车项目最多，为503个，其后依次是垃圾车、清扫车、清洗车等项目，分别为407个、160个、125个，吸污车项目最少，为90个，更多数据如下：
 
-<p align="center"><font face="微软雅黑" color="black" size="4">各订阅项目数据</font></p>
+<p align="center"> <font face="微软雅黑" color="black" size="4">各订阅项目数据</font></p>
 
-![3](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/3.3.jpg)
+![3](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/4.1.jpg)
 
 ### <span id="head6">5、 我关注的项目动态</span>
 
