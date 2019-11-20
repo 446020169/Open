@@ -22,9 +22,9 @@
 
 <p align="center"><font face="微软雅黑" color="black" size="4">招标信息数量统计</font></p>
 
-![1.1](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/1.1.jpg)
+![1.1](https://github.com/446020169/open/raw/master/Subscribe_report/Image/1.1.jpg)
 
-![1.2](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/1.2.jpg)
+![1.2](https://github.com/446020169/open/raw/master/Subscribe_report/Image/1.2.jpg)
 
 ### <span id="head3"> 2、各信息类型占比</span>
 
@@ -32,9 +32,9 @@
 
 <p align="center"><font face="微软雅黑" color="black" size="4">各招标信息类型占比</font></p>
 
-![2.1](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/2.1.jpg)
+![2.1](https://github.com/446020169/open/raw/master/Subscribe_report/Image/2.1.jpg)
 
-![2.2](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/2.2.jpg)
+![2.2](https://github.com/446020169/open/raw/master/Subscribe_report/Image/2.2.jpg)
 
 
 ### <span id="head4"> 3、各招标方式占比</span>
@@ -43,7 +43,7 @@
 
 <p align="center"><font face="微软雅黑" color="black" size="4">各招标方式对比</font></p>
 
-![3.0](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/3.0.jpg)
+![3.0](https://github.com/446020169/open/raw/master/Subscribe_report/Image/3.0.jpg)
 
 ### <span id="head5"> 4、各订阅项目数据</span>
 
@@ -51,11 +51,11 @@
 
 <p align="center"> <font face="微软雅黑" color="black" size="4">各订阅项目数据</font></p>
 
-![4.0](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/4.0.jpg)
+![4.0](https://github.com/446020169/open/raw/master/Subscribe_report/Image/4.0.jpg)
 
-![4.1](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/4.1.jpg)
+![4.1](https://github.com/446020169/open/raw/master/Subscribe_report/Image/4.1.jpg)
 
-![4.2](https://github.com/446020169/open/raw/master/%E8%AE%A2%E9%98%85%E6%8A%A5%E5%91%8A2/Image/4.2.jpg)
+![4.2](https://github.com/446020169/open/raw/master/Subscribe_report/Image/4.2.jpg)
 
 ### <span id="head6">5、 我关注的项目动态</span>
 
