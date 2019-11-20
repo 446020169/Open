@@ -24,8 +24,6 @@
 
 ![1.1](https://github.com/446020169/open/raw/master/Subscribe_report/Image/1.1.jpg)
 
-![1.2](https://github.com/446020169/open/raw/master/Subscribe_report/Image/1.2.jpg)
-
 ### <span id="head3"> 2、各信息类型占比</span>
 
 &emsp;&emsp;从上周为您推送的招标信息类型上看，拟建项目占比1.7%，招标预告占比1.7%，招标公告占比53.1%，招标结果占比32.0%，其他信息占比10.3%。  
@@ -33,8 +31,6 @@
 <p align="center"><font face="微软雅黑" color="black" size="4">各招标信息类型占比</font></p>
 
 ![2.2](https://github.com/446020169/open/raw/master/Subscribe_report/Image/2.2.jpg)
-
-![2.1](https://github.com/446020169/open/raw/master/Subscribe_report/Image/2.1.jpg)
 
 ### <span id="head4"> 3、各招标方式占比</span>
 
