@@ -20,7 +20,7 @@
 
 上周共为您推送招标信息908条，比上上周增加87条，数据如下：
 
-<p align="center"><font face="微软雅黑" color="black" size="4">招标信息数量统计</font></p>
+<p align="center"> 招标信息数量统计 </p>
 
 <div align=center><img src ="./Image/1.1.jpg"/></div>
 
@@ -28,7 +28,7 @@
 
 &emsp;&emsp;从上周为您推送的招标信息类型上看，拟建项目占比1.7%，招标预告占比1.7%，招标公告占比53.1%，招标结果占比32.0%，其他信息占比11.4%。  
 
-<p align="center"><font face="微软雅黑" color="black" size="4">各招标信息类型占比</font></p>
+<p align="center"> 各招标信息类型占比 </p>
 
 <div align=center><img src ="./Image/2.2.jpg"/></div>
 
@@ -36,15 +36,15 @@
 
 &emsp;&emsp;上周为您推送的招标公告中，公开招标占比69.9%，询价采购占比20.4%，竞争性谈判占比6.4%，公开竞价占比1.7%，单一来源占比1.5%，邀请招标占比0.1%。
 
-<p align="center"><font face="微软雅黑" color="black" size="4">各招标方式对比</font></p>
+<p align="center"> 各招标方式对比 </p>
 
 <div align=center><img src ="./Image/3.0.jpg"/></div>
 
 ### <span id="head5"> 4、各订阅项目数据</span>
 
-&emsp;&emsp;上周为您推送的招标项目中，洒水车项目最多，为503个，其后依次是垃圾车、清扫车、清洗车等项目，分别为407个、160个、125个，吸污车项目最少，为90个，更多数据如下：
+&emsp;&emsp;上周为您推送的招标项目中，洒水车项目最多，为503个，其后依次是垃圾车、清扫车、清洗车等项目，分别为407个、160个、125个，吸污车项目最少，为90个，更多数据如下：<kbd>下图三选一</kbd>
 
-<p align="center"> <font face="微软雅黑" color="black" size="4">各订阅项目数据</font></p>
+<p align="center"> 各订阅项目数据 </p>
 
 <div align=center><img src ="./Image/4.0.jpg"/></div>
 
