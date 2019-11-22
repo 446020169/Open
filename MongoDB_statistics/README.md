@@ -1,4 +1,4 @@
-<p align = "right"> :man_teacher: :handshake: :man_student:  &emsp; :pray: &emsp; :point_up_2: :heavy_plus_sign: :star: </p>  
+<p align = "right"> :man_teacher: :handshake: :man_student:  &emsp;  :pray:  &emsp; :point_up_2: :heavy_plus_sign: :star: </p>  
 
 # <span id="head2"> MongoDB日常数据统计(python_scripts)</span>
 
