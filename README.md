@@ -1,6 +1,6 @@
 <p align = "right"> :man_student: :handshake: :man_student:  &emsp; :pray: &emsp; :point_up_2: :heavy_plus_sign: :star: </p>  
 
-# 开放是进步之源
+# He's not a Data Scientist.
 
 ##### 文件(夹)介绍：
 
