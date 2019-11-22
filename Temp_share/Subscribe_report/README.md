@@ -22,8 +22,6 @@
 
 <p align="center"><font face="微软雅黑" color="black" size="4">招标信息数量统计</font></p>
 
-![1.1](./Image/1.1.jpg)
-
 <div align=center><img src ="./Image/1.1.jpg"/></div>
 
 ### <span id="head3"> 2、各信息类型占比</span>
@@ -32,7 +30,7 @@
 
 <p align="center"><font face="微软雅黑" color="black" size="4">各招标信息类型占比</font></p>
 
-![2.2](./Image/2.2.jpg)
+<div align=center><img src ="./Image/2.2.jpg"/></div>
 
 ### <span id="head4"> 3、各招标方式占比</span>
 
@@ -40,7 +38,7 @@
 
 <p align="center"><font face="微软雅黑" color="black" size="4">各招标方式对比</font></p>
 
-![3.0](./Image/3.0.jpg)
+<div align=center><img src ="./Image/3.0.jpg"/></div>
 
 ### <span id="head5"> 4、各订阅项目数据</span>
 
@@ -48,11 +46,11 @@
 
 <p align="center"> <font face="微软雅黑" color="black" size="4">各订阅项目数据</font></p>
 
-![4.0](./Image/4.0.jpg)
+<div align=center><img src ="./Image/4.0.jpg"/></div>
 
-![4.1](./Image/4.1.jpg)
+<div align=center><img src ="./Image/4.1.jpg"/></div>
 
-![4.2](./Image/4.2.jpg)
+<div align=center><img src ="./Image/4.2.jpg"/></div>
 
 ### <span id="head6">5、 我关注的项目动态</span>
 
