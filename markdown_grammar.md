@@ -1,7 +1,7 @@
 <p align = "right"> :man_teacher: :handshake: :man_student:  &emsp; :pray: &emsp; :point_up_2: :heavy_plus_sign: :star: </p>  
 
 # Markdown常用语法汇总
-
+ 
 **Markdown语法的版本不止一种，以下仅列举GitHub风格的Markdown(简称GFM)规范语法，本文正文用Markdown语法书写，原始语句及注释放在区块中(tab键、4个空格、```都可以生成区块，而且第三种还支持代码高亮)供参考：**
 
 &emsp;
