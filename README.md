@@ -7,7 +7,7 @@
 |文件(夹)|简介|
 |:----|:----|
 |[MongoDB_statistics][MongoDB_statistics]|MongoDB日常数据统计python_scripts|
-|[markdown_grammar][markdown_grammar]|Markdown常用语法汇总|
+|[Markdown_grammar][Markdown_grammar]|Markdown常用语法汇总|
 |[Other_python_scripts][Other_python_scripts]|Python脚本收集|
 |[Temp_share][Temp_share]|临时共享|
 
@@ -23,6 +23,6 @@
 
 
 [MongoDB_statistics]:https://github.com/446020169/open/tree/master/MongoDB_statistics
-[Other_python_scripts]:https://github.com/446020169/open/tree/master/Python_scripts
+[Other_python_scripts]:https://github.com/446020169/open/tree/master/Other_python_scripts
 [Temp_share]:https://github.com/446020169/open/tree/master/Temp_share
-[markdown_grammar]:https://github.com/446020169/open/raw/master/markdown_grammar.md
+[Markdown_grammar]:https://github.com/446020169/open/raw/master/Markdown_grammar.md
