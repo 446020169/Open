@@ -82,17 +82,17 @@
 
 ![行业数据][026]
 
-更多详情，http:
+详情链接 https://github.com/446020169/Open/blob/master/Economic_census/Industry_data.md
 
 #### 5) 区域数据
 
 ![区域数据][027]
 
-更多详情，http:
+详情链接 https://github.com/446020169/Open/blob/master/Economic_census/Area_data.md
 
 ## 四. 汇报
 
-![汇报][100]
+![汇报][28]
 
 <!--附件.图片链接-->
 [001]:https://github.com/446020169/Open/raw/master/Economic_census/image/001.jpg
@@ -123,24 +123,3 @@
 [026]:https://github.com/446020169/Open/raw/master/Economic_census/image/026.jpg
 [027]:https://github.com/446020169/Open/raw/master/Economic_census/image/027.jpg
 [028]:https://github.com/446020169/Open/raw/master/Economic_census/image/028.jpg
-[029]:https://github.com/446020169/Open/raw/master/Economic_census/image/029.jpg
-[030]:https://github.com/446020169/Open/raw/master/Economic_census/image/030.jpg
-[031]:https://github.com/446020169/Open/raw/master/Economic_census/image/031.jpg
-[032]:https://github.com/446020169/Open/raw/master/Economic_census/image/032.jpg
-[033]:https://github.com/446020169/Open/raw/master/Economic_census/image/033.jpg
-[034]:https://github.com/446020169/Open/raw/master/Economic_census/image/034.jpg
-[035]:https://github.com/446020169/Open/raw/master/Economic_census/image/035.jpg
-[036]:https://github.com/446020169/Open/raw/master/Economic_census/image/036.jpg
-[037]:https://github.com/446020169/Open/raw/master/Economic_census/image/037.jpg
-[038]:https://github.com/446020169/Open/raw/master/Economic_census/image/038.jpg
-[039]:https://github.com/446020169/Open/raw/master/Economic_census/image/039.jpg
-[040]:https://github.com/446020169/Open/raw/master/Economic_census/image/040.jpg
-
-
-
-
-
-
-
-
-[100]:https://github.com/446020169/Open/raw/master/Economic_census/image/100.jpg
