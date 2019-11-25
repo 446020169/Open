@@ -82,13 +82,13 @@
 
 ![行业数据][026]
 
-详情链接 https://github.com/446020169/Open/blob/master/Economic_census/Industry_data.md
+##### 详情链接 https://github.com/446020169/Open/blob/master/Economic_census/Industry_data.md
 
 #### 5) 区域数据
 
 ![区域数据][027]
 
-详情链接 https://github.com/446020169/Open/blob/master/Economic_census/Area_data.md
+##### 详情链接 https://github.com/446020169/Open/blob/master/Economic_census/Area_data.md
 
 ## 四. 汇报
 
