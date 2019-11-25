@@ -4,7 +4,7 @@
 
 ![整体][001]
 
-## 对象
+## 一. 对象
 
 ![对象][002]
 1. 三次产业的划分：
@@ -25,41 +25,39 @@
     * 相对独立地组织生产活动或经营活动；
     * 能提供收入或者支出等相关资料。
 
-## 目的
+## 二. 目的
 
 ![目的][003]
 
-## 结果
+## 三. 结果
 
 ![结果][004]
 
-### 总体单位数量
+### 1.总体单位数量情况
 
 ![总体单位数量][005]
 
-### 产业活动单位
+### 2. 产业活动单位
 
 ![产业活动单位][006]
 
-### 个体经营户
+### 3. 个体经营户
 
 ![个体经营户.单位数量][007]
 ![个体经营户.从业人数][008]
 
-
-### 境内第二、三产业全部法人单位
-
-
-
-
-## 汇报
+### 4. 境内第二、三产业全部法人单位
 
 
 
 
 
 
+## 四. 汇报
 
+![汇报][100]
+
+<!--附件.图片链接-->
 [001]:https://github.com/446020169/Open/raw/master/Economic_census/image/001.jpg
 [002]:https://github.com/446020169/Open/raw/master/Economic_census/image/002.jpg
 [003]:https://github.com/446020169/Open/raw/master/Economic_census/image/003.jpg
@@ -68,3 +66,13 @@
 [006]:https://github.com/446020169/Open/raw/master/Economic_census/image/006.jpg
 [007]:https://github.com/446020169/Open/raw/master/Economic_census/image/007.jpg
 [008]:https://github.com/446020169/Open/raw/master/Economic_census/image/008.jpg
+
+
+
+
+
+
+
+
+
+[100]:https://github.com/446020169/Open/raw/master/Economic_census/image/100.jpg
