@@ -7,6 +7,10 @@
 ## 一. 对象
 
 ![对象][002]
+
+<div align=center> ![对象][002] </div>
+
+
 1. 三次产业的划分：
 
 * 第一产业是指农、林、牧、渔业（不含农、林、牧、渔专业及辅助性活动）。
@@ -48,6 +52,19 @@
 
 ### 4. 境内第二、三产业全部法人单位
 
+![总体][009]
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -66,7 +83,38 @@
 [006]:https://github.com/446020169/Open/raw/master/Economic_census/image/006.jpg
 [007]:https://github.com/446020169/Open/raw/master/Economic_census/image/007.jpg
 [008]:https://github.com/446020169/Open/raw/master/Economic_census/image/008.jpg
-
+[009]:https://github.com/446020169/Open/raw/master/Economic_census/image/009.jpg
+[010]:https://github.com/446020169/Open/raw/master/Economic_census/image/010.jpg
+[011]:https://github.com/446020169/Open/raw/master/Economic_census/image/011.jpg
+[012]:https://github.com/446020169/Open/raw/master/Economic_census/image/012.jpg
+[013]:https://github.com/446020169/Open/raw/master/Economic_census/image/013.jpg
+[014]:https://github.com/446020169/Open/raw/master/Economic_census/image/014.jpg
+[015]:https://github.com/446020169/Open/raw/master/Economic_census/image/015.jpg
+[016]:https://github.com/446020169/Open/raw/master/Economic_census/image/016.jpg
+[017]:https://github.com/446020169/Open/raw/master/Economic_census/image/017.jpg
+[018]:https://github.com/446020169/Open/raw/master/Economic_census/image/018.jpg
+[019]:https://github.com/446020169/Open/raw/master/Economic_census/image/019.jpg
+[020]:https://github.com/446020169/Open/raw/master/Economic_census/image/020.jpg
+[021]:https://github.com/446020169/Open/raw/master/Economic_census/image/021.jpg
+[022]:https://github.com/446020169/Open/raw/master/Economic_census/image/022.jpg
+[023]:https://github.com/446020169/Open/raw/master/Economic_census/image/023.jpg
+[024]:https://github.com/446020169/Open/raw/master/Economic_census/image/024.jpg
+[025]:https://github.com/446020169/Open/raw/master/Economic_census/image/025.jpg
+[026]:https://github.com/446020169/Open/raw/master/Economic_census/image/026.jpg
+[027]:https://github.com/446020169/Open/raw/master/Economic_census/image/027.jpg
+[028]:https://github.com/446020169/Open/raw/master/Economic_census/image/028.jpg
+[029]:https://github.com/446020169/Open/raw/master/Economic_census/image/029.jpg
+[030]:https://github.com/446020169/Open/raw/master/Economic_census/image/030.jpg
+[031]:https://github.com/446020169/Open/raw/master/Economic_census/image/031.jpg
+[032]:https://github.com/446020169/Open/raw/master/Economic_census/image/032.jpg
+[033]:https://github.com/446020169/Open/raw/master/Economic_census/image/033.jpg
+[034]:https://github.com/446020169/Open/raw/master/Economic_census/image/034.jpg
+[035]:https://github.com/446020169/Open/raw/master/Economic_census/image/035.jpg
+[036]:https://github.com/446020169/Open/raw/master/Economic_census/image/036.jpg
+[037]:https://github.com/446020169/Open/raw/master/Economic_census/image/037.jpg
+[038]:https://github.com/446020169/Open/raw/master/Economic_census/image/038.jpg
+[039]:https://github.com/446020169/Open/raw/master/Economic_census/image/039.jpg
+[040]:https://github.com/446020169/Open/raw/master/Economic_census/image/040.jpg
 
 
 
