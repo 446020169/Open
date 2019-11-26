@@ -108,6 +108,23 @@
 
 ![汇报][028]
 
+## 五 :interrobang: 
+
+![企业法人关注][137]
+![企业法人关注][139]
+
+![个体户关注的][134]
+![个体户关注的][135]
+
+![普通从业者关注的][138]
+![女性关注的][136]
+
+
+
+
+
+
+
 <!--附件.图片链接-->
 [001]:https://github.com/446020169/Open/raw/master/Economic_census/image/001.jpg
 [002]:https://github.com/446020169/Open/raw/master/Economic_census/image/002.jpg
@@ -137,3 +154,10 @@
 [026]:https://github.com/446020169/Open/raw/master/Economic_census/image/026.jpg
 [027]:https://github.com/446020169/Open/raw/master/Economic_census/image/027.jpg
 [028]:https://github.com/446020169/Open/raw/master/Economic_census/image/028.jpg
+
+[134]:https://github.com/446020169/Open/raw/master/Economic_census/image/134.jpg
+[135]:https://github.com/446020169/Open/raw/master/Economic_census/image/135.jpg
+[136]:https://github.com/446020169/Open/raw/master/Economic_census/image/136.jpg
+[137]:https://github.com/446020169/Open/raw/master/Economic_census/image/137.jpg
+[138]:https://github.com/446020169/Open/raw/master/Economic_census/image/138.jpg
+[139]:https://github.com/446020169/Open/raw/master/Economic_census/image/139.jpg
