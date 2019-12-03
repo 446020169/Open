@@ -276,13 +276,17 @@ ___
 [百度](http://www.baidu.com/ '百度一下')  
 www.biadu.com  
 http://http://www.baidu.com  
+<a href=www.baidu.com>百度</a>  
 
 	[百度](http://www.baidu.com/ '百度一下')
 	www.biadu.com  
 	http://http://www.baidu.com  
+	<a href=www.baidu.com>百度</a>  
 	[]中括号中为连接显示的内容，后面引号中'百度一下'在鼠标移到'百度'二字时，会浮动显示，注意：与链接之间有空格。
 	Github支持直接写的链接，像这样：www.biadu.com http://http://www.baidu.com  
+	最后一种形式为HTML标签属性，这种形式可以和其他HTML标签属性嵌套，比如居中的带链接文本。
 	点击该链接，会在原窗口打开，Github不支持在新窗口打开链接的语法。
+
 
 ### 2.4 插入邮箱
 
