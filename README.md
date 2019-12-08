@@ -56,8 +56,6 @@
 
 &emsp;
 
-&emsp;
-
 <p align = "right">&emsp;&emsp;&emsp;一条小尾巴&emsp;&emsp;&emsp;&emsp;</p>
 <p align = "right">深挖数据分析核心技能；</p>
 <p align = "right">突破程序代码技术边界；</p>
