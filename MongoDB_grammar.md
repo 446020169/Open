@@ -147,13 +147,13 @@ null，查询age字段不存在或者值为null的数据
 同时包含bananat和apple(顺序无关紧要)  
 >db.test.find({"fruit": {"$all": ["banana","apple"]}})
 
-精确匹配(数据必须和查询条件完全匹配，顺序也必须保持一致)
+精确匹配(数据必须和查询条件完全匹配，顺序也必须保持一致)  
 >db.test.find({"fruit":["apple","banana","peach"]})
 
-下标(数组的起始下标是0)
+下标(数组的起始下标是0)  
 >db.test.find({"fruit.2":"peach"})
 
-$size，数组长度，查询fruit长度为3.
+$size，数组长度，查询fruit长度为3.  
 >db.test.find({"fruit": {$size : 3}})
 
 #### 7、$type操作符
@@ -183,7 +183,7 @@ Timestamp|17|
 Min key|255|Query with -1.  
 Max key|127|  
 
-如果想获取 "col" 集合中 title 为 String 的数据，可以使用以下命令：
+如果想获取 "col" 集合中 title 为 String 的数据，可以使用以下命令：  
 >db.col.find({"title" : {$type : 2}})  
 >或  
 >db.col.find({"title" : {$type : 'string'}})  
@@ -333,7 +333,7 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 
 #### 13、$expr操作符
 
-使用$expr运算符联合多个运算，选出budget值大于spent值的数据
+使用$expr运算符联合多个运算，选出budget值大于spent值的数据  
 例子：
 { "_id" : 1, "category" : "food", "budget": 400, "spent": 450 }
 { "_id" : 2, "category" : "drinks", "budget": 100, "spent": 150 }
@@ -352,7 +352,7 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 
 #### 1、$set  
 
-用来指定一个键并更新键值，若键不存在并创建。
+用来指定一个键并更新键值，若键不存在并创建。  
 >{ $set : { field : value } }
 
 #### 2、$unset  
@@ -362,7 +362,7 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 
 #### 3、$inc  
 
-可以对文档的某个值为数字型（只能为满足要求的数字）的键进行增减的操作。
+可以对文档的某个值为数字型（只能为满足要求的数字）的键进行增减的操作。  
 >{ $inc : { field : value } }
 
 #### 4、$rename  
@@ -370,7 +370,7 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 修改字段名称  
 {$rename:{old_field_name:new_field_name}}  
 要将name字段改名为"alias"，如下面的代码所示：  
-{"_id":ObjectId("4fe686288414d282f712fae8"),"name":[],"userid":3}
+{"_id":ObjectId("4fe686288414d282f712fae8"),"name":[],"userid":3}  
 >db.t3.update({"userid":3},{$rename:{"name":"alias"}})  
 >db.t3.find()
 
@@ -378,17 +378,17 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 
 #### 5、$push  
 
-把value追加到field里面去，field一定要是数组类型才行，如果field不存在，会新增一个数组类型加进去。
+把value追加到field里面去，field一定要是数组类型才行，如果field不存在，会新增一个数组类型加进去。  
 >{ $push : { field : value } }
 
 #### 6、$pushAll  
 
-同$push，只是一次可以追加多个值到一个数组字段内。
+同$push，只是一次可以追加多个值到一个数组字段内。  
 >{ $pushAll : { field : value_array } }
 
 #### 7、$addToSet  
 
-增加一个值到数组内，而且只有当这个值不在数组内才增加。
+增加一个值到数组内，而且只有当这个值不在数组内才增加。  
 >{ $addToSet : { field : value } }
 
 #### 8、$each  
@@ -413,12 +413,12 @@ $each修饰符允许$addToSet操作符添加多个元素到数组字段中，$ad
 
 #### 9、$pull  
 
-从数组field内删除一个等于value值。
+从数组field内删除一个等于value值。  
 >{ $pull : { field : _value } }
 
 #### 10、$pullAll
 
-同$pull，只是一次可以从数组field内删除多个等于value值。
+同$pull，只是一次可以从数组field内删除多个等于value值。  
 >{ $pullAll : { field : value_array}}
 
 #### 11、$pop  
@@ -564,21 +564,21 @@ distinct，查询年龄为18,并且城市不重复的数据
 
 ### （三）count计数查询
 
-count，查询年龄为18的总数
+count，查询年龄为18的总数  
 >db.test.find({age:18}).count()
 
 ### （四）Limit、Skip、sort限制查询
 
-limit()方法接受一个数字参数，该参数指定从MongoDB中读取的记录条数。
+limit()方法接受一个数字参数，该参数指定从MongoDB中读取的记录条数。  
 > db.col.find({},{"title":1,_id:0}).limit(2)
 
-skip方法同样接受一个数字参数作为跳过的记录条数。
+skip方法同样接受一个数字参数作为跳过的记录条数。  
 >db.col.find({},{"title":1,_id:0}).skip(2)
 
-以下实例会跳过第一条符合条件的文档数据，显示第二条符合条件的文档数据。
+以下实例会跳过第一条符合条件的文档数据，显示第二条符合条件的文档数据。  
 >db.col.find({},{"title":1,_id:0}).limit(1).skip(1)
 
-sort() 方法可以通过参数指定排序的字段，并使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而 -1 是用于降序排列。
+sort() 方法可以通过参数指定排序的字段，并使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而 -1 是用于降序排列。  
 >db.COLLECTION_NAME.find().sort({KEY:1})
 
 **skip(), limilt(), sort()三个放在一起执行的时候，执行的顺序是先 sort(), 然后是 skip()，最后是显示的 limit()。**
@@ -587,8 +587,8 @@ sort() 方法可以通过参数指定排序的字段，并使用 1 和 -1 来指
 
 ### （一）aggergate()简介
 
-MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。有点类似sql语句中的 count(*)。
-aggregate() 方法的基本语法格式如下所示：
+MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。有点类似sql语句中的 count(*)。  
+aggregate() 方法的基本语法格式如下所示：  
 >db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
 
 MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传递给下一个管道处理。管道操作是可以重复的。  
@@ -897,7 +897,7 @@ $substr与$substrBytes结果相同，会将汉字的字符长度视为2，$subst
         {"$match":{"prodata.buyer_gov":1,"prodata.bidopentime":{$gte:1546272000,$lt:1577808000},"province":"江西","prodata.area":{$ne:"江西"}}},
         {"$group":{"_id":{"province":"$province"},"count":{"$sum":1}}}]).toArray();
 
-表的关联查询，如果没有索引，就别用了，速度太慢了。  
+表的关联查询，如果没有索引或者数据量太大，就别用了，速度太慢。  
 
 ## 六、索引
 
@@ -1048,10 +1048,10 @@ N: N (多对多)
         }]
     } 
 
-以上数据保存在单一的文档中，可以比较容易的获取和维护数据。 你可以这样查询用户的地址：
+以上数据保存在单一的文档中，可以比较容易的获取和维护数据。 你可以这样查询用户的地址：  
 >db.users.findOne({"name":"Tom Benzamin"},{"address":1})
 
-注意：这种数据结构的缺点是，如果用户和用户地址在不断增加，数据量不断变大，会影响读写性能。
+注意：这种数据结构的缺点是，如果用户和用户地址在不断增加，数据量不断变大，会影响读写性能。  
 
 #### 2、引用式关系
 
@@ -1412,11 +1412,11 @@ db.version()|查看当前db版本
 
 ## 十、Studio3T小技巧
 
-用Studio 3T进行聚合查询时，如果结果太多，容易显示不全。提示“type it for more”。想要查询全部结果，可以在语句后加.toArray()或.forEach(printjson)。区别是：
-.toArray()是标准格式所有结果都在一个数组中，便于用脚本转换成csv表格文件，进一步操作。
-.forEach(printjson)是独立的一条条结果，便于直接查看。
+用Studio 3T进行聚合查询时，如果结果太多，容易显示不全。提示“type it for more”。想要查询全部结果，可以在语句后加.toArray()或.forEach(printjson)。区别是：  
+.toArray()是标准格式所有结果都在一个数组中，便于用脚本转换成csv表格文件，进一步操作。  
+.forEach(printjson)是独立的一条条结果，便于直接查看。  
 
 ## 十一、忠告
 
-* 对MongoDB的操作，尽量使用MongoDB语句，而不是用python语句，尤其是for循环，太影响效率了。
-* MongoDB自带的语句基本能满足所有对MongoDB的操作，包括根据条件打标签。
+* 对MongoDB的操作，尽量使用MongoDB语句，而不是用python语句，尤其是for循环，太影响效率了。  
+* MongoDB自带的语句基本能满足所有对MongoDB的操作，包括根据条件打标签。  
