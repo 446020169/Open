@@ -1,10 +1,89 @@
-[TOC]
-
 <p align = "right"> :man_student: :handshake: :man_student:  &emsp; :pray: &emsp; :point_up_2: :heavy_plus_sign: :star: </p>  
 
-# MongoDB常用语句汇总
+# <span id="head1"> MongoDB常用语句汇总</span>
 
-## 一、登陆、显示、操作
+- [ MongoDB常用语句汇总](#head1)
+	- [ 一、登陆、显示、操作](#head2)
+	- [ 二、插入、删除、更新](#head3)
+		- [ （一）插入](#head4)
+		- [ （二）删除](#head5)
+		- [ （三）更新](#head6)
+	- [ 三、$操作符](#head7)
+		- [ （一）查询操作符](#head8)
+			- [ 1、数值比较符](#head9)
+			- [ 2、and、or逻辑符](#head10)
+			- [ 3、$in、$nin、$not](#head11)
+			- [ 4、$exists存在操作符](#head12)
+			- [ 5、$mod取模运算符](#head13)
+			- [ 6、$all、$size数组操作符](#head14)
+			- [ 7、$type操作符](#head15)
+			- [ 8、正则条件](#head16)
+			- [ 9、$偏移操作符  ](#head17)
+			- [ 10、$where条件操作符](#head18)
+			- [ 11、内嵌文档操作符](#head19)
+			- [ 12、$text操作符](#head20)
+			- [ 13、$expr操作符](#head21)
+		- [ （二）更新操作符](#head22)
+			- [1、$set  ](#head23)
+			- [2、$unset  ](#head24)
+			- [3、$inc  ](#head25)
+			- [4、$rename  ](#head26)
+			- [5、$push  ](#head27)
+			- [6、$pushAll  ](#head28)
+			- [7、$addToSet  ](#head29)
+			- [8、$each  ](#head30)
+			- [9、$pull  ](#head31)
+			- [10、$pullAll](#head32)
+			- [11、$pop  ](#head33)
+			- [12、$bit  ](#head34)
+			- [13、$slice  ](#head35)
+			- [14、$mul  ](#head36)
+			- [15、$position  ](#head37)
+			- [16、$setOnInsert  ](#head38)
+			- [17、$currentDate  ](#head39)
+	- [ 四、查询](#head40)
+		- [ （一）基本查询](#head41)
+		- [ （二）distinct去重查询](#head42)
+		- [ （三）count计数查询](#head43)
+		- [ （四）Limit、Skip、sort限制查询](#head44)
+	- [ 五、聚合](#head45)
+		- [ （一）aggergate()简介](#head46)
+		- [ （二）聚合$group表达式运算符](#head47)
+		- [ （三）其他聚合运算符](#head48)
+		- [ （四）聚合例子](#head49)
+			- [ 1、$project实例](#head50)
+			- [ 2、$match实例](#head51)
+			- [ 3、$skip实例](#head52)
+			- [ 4、$group实例](#head53)
+			- [ 5、$concat实例](#head54)
+			- [ 6、$add、$subtract、$multiply、$divide](#head55)
+			- [ 7、$cond条件及其if-else使用](#head56)
+			- [ 8、$redact操作符的使用](#head57)
+			- [ 9、字段比较](#head58)
+			- [ 10、时间聚合统计](#head59)
+			- [ 11、$substr截取字符串](#head60)
+			- [ 12、$lookup实例](#head61)
+	- [ 六、索引](#head62)
+		- [ （一）常规索引语法](#head63)
+		- [ （二）其他索引语法](#head64)
+		- [ （三）高级索引](#head65)
+		- [ （四）索引限制](#head66)
+	- [ 七、高级教程与操作](#head67)
+		- [ （一）MongoDB关系](#head68)
+		- [ （二）数据库引用](#head71)
+		- [ （三）覆盖索引查询](#head72)
+		- [ （四）查询分析](#head73)
+		- [ （五）原子操作](#head74)
+		- [ （六）ObjectId](#head75)
+		- [ （七）Map Reduce](#head76)
+		- [ （八）固定集合](#head77)
+		- [ （九）自定义函数](#head78)
+	- [ 八、集合方法大全](#head79)
+	- [ 九、数据库方法大全](#head80)
+	- [ 十、Studio3T小技巧](#head81)
+	- [ 十一、忠告](#head82)
+
+## <span id="head2"> 一、登陆、显示、操作</span>
 
 假设在本机上有一个端口为27082的MongoDB服务，假设已经把mongo bin文件加入到系统PATH下。  
 >登陆：mongo --port 27082  
@@ -22,9 +101,9 @@
 >删除集合：db.collection.drop()  
 >新建集合（名字为runoob）：db.createCollection("runoob")  
 
-## 二、插入、删除、更新
+## <span id="head3"> 二、插入、删除、更新</span>
 
-### （一）插入
+### <span id="head4"> （一）插入</span>
 
 插入文档：db.mycol2.insert({"name" : "菜鸟教程"})（有则插入，无则新建），3.2版本之后，常用以下方法：  
 
@@ -34,7 +113,7 @@
 插入多条数据：
 >db.collection.insertMany([{"b": 3}, {'c': 4}])（通常先创建数据，将数据放入数组中，一次insert到集合中）  
 
-### （二）删除
+### <span id="head5"> （二）删除</span>
 
 删除文档：db.col.remove({'title':'MongoDB 教程'})  
 >删除条件下所有文档，常用一下方式：  
@@ -46,19 +125,19 @@ remove()方法并不会真正释放空间，需要继续执行db.repairDatabase(
 >删除status等于D的一个文档：db.inventory.deleteOne({status:"D"})  
 >删除status等于A的全部文档：db.inventory.deleteMany({status:"A"})  
 
-### （三）更新
+### <span id="head6"> （三）更新</span>
 
 update() 方法用于更新已存在的文档。语法格式如下：
 
-    db.collection.update(
-    <query>,
-    <update>,
-    {
-        upsert: <boolean>,
-        multi: <boolean>,
-        writeConcern: <document>
-    }
-    )
+db.collection.update(
+<query>,
+<update>,
+{
+upsert: <boolean>,
+multi: <boolean>,
+writeConcern: <document>
+}
+)
 
 query : update的查询条件，类似sql update查询内where后面的。  
 update : update的对象和一些更新的操作符（如$,$inc...）等，也可以理解为sql update查询内set后面的。  
@@ -76,11 +155,11 @@ save()方法有更新和插入两种功能，已存在则更新，不存在则�
 
 **save()也已过时，推荐使用 saveOne() 和 saveMany()方法。**  
 
-## 三、$操作符
+## <span id="head7"> 三、$操作符</span>
 
-### （一）查询操作符
+### <span id="head8"> （一）查询操作符</span>
 
-#### 1、数值比较符
+#### <span id="head9"> 1、数值比较符</span>
 
 操作|格式|范例|RDBMS中的类似语句
 :---|:------------ |:--|:------------
@@ -94,14 +173,14 @@ save()方法有更新和插入两种功能，已存在则更新，不存在则�
 组合使用，获取"col"集合中 "likes" 大于等于100，小于 200 的数据，你可以使用以下命令：  
 >db.col.find({likes : {$gte:100,$lt:200}})
 
-#### 2、and、or逻辑符
+#### <span id="head10"> 2、and、or逻辑符</span>
 
 演示and和or联合使用，类似常规SQL语句为：'where likes>50 AND (by = '菜鸟教程' OR title = 'MongoDB 教程')'
 >db.col.find({"likes": {$gt:50}, $or: [{"by": "菜鸟教程"},{"title": "MongoDB 教程"}]}).pretty()
 
 and在这里体现为逗号，当然也可以这样用：{$and:[{key:value},{key:value}]}。
 
-#### 3、$in、$nin、$not
+#### <span id="head11"> 3、$in、$nin、$not</span>
 
 $in  
 在范围内  
@@ -123,7 +202,7 @@ $not
 查询名字不以T开头的  
 >db.test.find({name: {$not: /^T.*/}})
 
-#### 4、$exists存在操作符
+#### <span id="head12"> 4、$exists存在操作符</span>
 
 $exists，查询包含age字段的数据  
 >db.test.find({age: {$exists: true}})
@@ -133,13 +212,13 @@ true存在，false不存在
 null，查询age字段不存在或者值为null的数据  
 >db.test.find({age:null})
 
-#### 5、$mod取模运算符
+#### <span id="head13"> 5、$mod取模运算符</span>
 
 查询age取模10等于1的数据。  
 >db.student.find({age:{$mod:[10,1]}})
 结果显示年龄为1、11、21……  
 
-#### 6、$all、$size数组操作符
+#### <span id="head14"> 6、$all、$size数组操作符</span>
 
 数组中所有包含banana  
 >db.test.find({"fruit":"banana"})
@@ -156,7 +235,7 @@ null，查询age字段不存在或者值为null的数据
 $size，数组长度，查询fruit长度为3.  
 >db.test.find({"fruit": {$size : 3}})
 
-#### 7、$type操作符
+#### <span id="head15"> 7、$type操作符</span>
 
 $type操作符是基于BSON类型来检索集合中匹配的数据类型，并返回结果。  
 MongoDB 中可以使用的类型如下表所示：  
@@ -188,7 +267,7 @@ Max key|127|
 >或  
 >db.col.find({"title" : {$type : 'string'}})  
 
-#### 8、正则条件
+#### <span id="head16"> 8、正则条件</span>
 
 查询title包含"教"字的文档：  
 >db.col.find({title:/教/})
@@ -239,7 +318,7 @@ db.products.find( { description: { $regex: /m.*line/, $options: 'i' } } )
 结果为：  
 { "_id" : 102, "sku" : "xyz456", "description" : "Many spaces before line" }  
 
-#### 9、$偏移操作符  
+#### <span id="head17">9、$偏移操作符  </span>
 
 在需要对数组中的值进行操作的时候，可通过位置或者定位操作符（"$"）,数组是0开始的，可以直接将下标作为键来选择元素。  
 示例如下：  
@@ -258,7 +337,7 @@ update后面第二个参数true意为按条件查出来所有记录全部更新�
 这里的 $ 也可以用值来代替，例如：0、1、2、3……。  
 > t.update( {'comments.by':'joe'}, {$inc:{'comments.0.votes':1}})  
 
-#### 10、$where条件操作符
+#### <span id="head18"> 10、$where条件操作符</span>
 
 条件操作符，aggregate中不支持$where。  
 $where 用它可以执行任意JavaScript作为查询的一部分，这就使得查询能做（几乎）任何事情，最典型的就是比较两个文档的键的值是否相等，一定要避免使用where。因为它在速度上要比常规查询慢很多，只有走投无路才考虑，将常规查询作为前置过滤，与where组合使用可以不牺牲性能，如果可能的话，用索引根据非where子句进行过滤，where只用于对结果进行调优。  
@@ -271,7 +350,7 @@ $where 用它可以执行任意JavaScript作为查询的一部分，这就使得
 判断两个字段不相等  
 >db.xxx.find({"$where":"this.filed1 != this.filed2 ", xxx:"xxx",xxx:"xxx" })
 
-#### 11、内嵌文档操作符
+#### <span id="head19"> 11、内嵌文档操作符</span>
 
 $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的多个键操作时才会用到，并且只返回内嵌文档中符合条件的第一条数据。  
 使用方法演示：  
@@ -302,16 +381,16 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 查询不出结果。  
 因此，(1)展示的嵌套查询正是我们想要的查询方式。  
 
-#### 12、$text操作符
+#### <span id="head20"> 12、$text操作符</span>
 
 全文检索对每一个词建立一个索引，指明该词在文章中出现的次数和位置，当用户查询时，检索程序就根据事先建立的索引进行查找，并将查找的结果反馈给用户的检索方式。这个过程类似于通过字典中的检索字表查字的过程。  
 目前支持15种语言的全文索引：danish、dutch、english、finnish、french、german、hungarian、italian、norwegian、portuguese、romanian、russian、spanish、swedish、turkish。Mongodb 3.2之后的企业版中才开始加入了对中文的支持。  
 
 创建全文索引  
 {"post_text": "enjoy the mongodb articles on Runoob",  
-   "tags": [  
-      "mongodb",  
-      "runoob"]}  
+"tags": [  
+"mongodb",  
+"runoob"]}  
 
 建立全文索引，这样我们可以搜索文章内的内容：  
 >db.posts.createIndex({post_text:"text"})  
@@ -321,8 +400,8 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 >db.posts.find({$text:{$search:"runoob"}})  
 
 { "_id" : ObjectId("53493d14d852429c10000002"),  
-   "post_text" : "enjoy the mongodb articles on Runoob",  
-   "tags" : [ "mongodb", "runoob" ]}  
+"post_text" : "enjoy the mongodb articles on Runoob",  
+"tags" : [ "mongodb", "runoob" ]}  
 
 删除全文索引  
 删除已存在的全文索引，可以使用 find 命令查找索引名：  
@@ -331,7 +410,7 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 通过以上命令获取索引名，本例的索引名为post_text_text，执行以下命令来删除索引：  
 >db.posts.dropIndex("post_text_text")  
 
-#### 13、$expr操作符
+#### <span id="head21"> 13、$expr操作符</span>
 
 使用$expr运算符联合多个运算，选出budget值大于spent值的数据  
 例子：
@@ -348,24 +427,24 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 { "_id" : 2, "category" : "drinks", "budget" : 100, "spent" : 150 }
 { "_id" : 5, "category" : "travel", "budget" : 200, "spent" : 650 }
 
-### （二）更新操作符
+### <span id="head22"> （二）更新操作符</span>
 
-#### 1、$set  
+#### <span id="head23">1、$set  </span>
 
 用来指定一个键并更新键值，若键不存在并创建。  
 >{ $set : { field : value } }
 
-#### 2、$unset  
+#### <span id="head24">2、$unset  </span>
 
 用来删除一个键。
 >{ $unset : { field : 1} }
 
-#### 3、$inc  
+#### <span id="head25">3、$inc  </span>
 
 可以对文档的某个值为数字型（只能为满足要求的数字）的键进行增减的操作。  
 >{ $inc : { field : value } }
 
-#### 4、$rename  
+#### <span id="head26">4、$rename  </span>
 
 修改字段名称  
 {$rename:{old_field_name:new_field_name}}  
@@ -376,63 +455,63 @@ $elemMatch它会限定条件进行分组，仅当需要对一个内嵌文档的�
 
 {"_id":ObjectId("4fe686288414d282f712fae8"),"alias":[],"userid":3}
 
-#### 5、$push  
+#### <span id="head27">5、$push  </span>
 
 把value追加到field里面去，field一定要是数组类型才行，如果field不存在，会新增一个数组类型加进去。  
 >{ $push : { field : value } }
 
-#### 6、$pushAll  
+#### <span id="head28">6、$pushAll  </span>
 
 同$push，只是一次可以追加多个值到一个数组字段内。  
 >{ $pushAll : { field : value_array } }
 
-#### 7、$addToSet  
+#### <span id="head29">7、$addToSet  </span>
 
 增加一个值到数组内，而且只有当这个值不在数组内才增加。  
 >{ $addToSet : { field : value } }
 
-#### 8、$each  
+#### <span id="head30">8、$each  </span>
 
 $each修饰符允许$addToSet操作符添加多个元素到数组字段中，$addToset和它组合起来可以添加多个不同的值,而用ne和push组合就不能实现.  
 { _id: 1, letters: ["a", "b"] }  
 
-    db.test.update(
-    { _id: 1 },
-    { $addToSet: {letters: [ "c", "d" ] } })
+db.test.update(
+{ _id: 1 },
+{ $addToSet: {letters: [ "c", "d" ] } })
 
 { _id: 1, letters: [ "a", "b", [ "c", "d" ] ] }  
 如果想将数组中的每个元素分开添加到letters字段中，可以使用$each修饰符。  
 { _id: 2, item: "cable", tags: [ "electronics", "supplies" ] }  
 
-    db.inventory.update(
-    { _id: 2 },
-    { $addToSet: { tags: { $each: [ "camera", "electronics", "accessories" ] } } })
+db.inventory.update(
+{ _id: 2 },
+{ $addToSet: { tags: { $each: [ "camera", "electronics", "accessories" ] } } })
 
 上面的操作只会将"camera"和"accessories"元素添加到tags数组字段中，由于"electronics"元素已经存在于数组中了。  
 {_id: 2,item: "cable",tags: [ "electronics", "supplies", "camera", "accessories" ]}  
 
-#### 9、$pull  
+#### <span id="head31">9、$pull  </span>
 
 从数组field内删除一个等于value值。  
 >{ $pull : { field : _value } }
 
-#### 10、$pullAll
+#### <span id="head32"> 10、$pullAll</span>
 
 同$pull，只是一次可以从数组field内删除多个等于value值。  
 >{ $pullAll : { field : value_array}}
 
-#### 11、$pop  
+#### <span id="head33">11、$pop  </span>
 
 删除数组的第一个或最后一个元素
 >{ $pop : { field : 1 } }
 
-#### 12、$bit  
+#### <span id="head34">12、$bit  </span>
 
 位操作，integer类型 **暂时不会用**
 >{$bit : { field : {and : 5}}}
 >{$bit: {fields: {and|or|xor: int}}}
 
-#### 13、$slice  
+#### <span id="head35">13、$slice  </span>
 
 返回数组的一个子集合,它也可以返回指定地方的指定条数，如果数组长度不够则返回指定地方之后的所有数据。另外，除非特别声明，否则使用slice时将返回文档中的所有键，这与其他的不太一样。  
 $slice在$push中是为了限制数组的总长度，-1说明数组长度为1，-5说明数组长度为5，数组为0说明数组是空。  
@@ -443,7 +522,7 @@ $slice在$push中是为了限制数组的总长度，-1说明数组长度为1，
 运行结果，我们分析一下应该是总长度为3，由于要新增2个元素，所以最前面的两个元素会被删除，在Xingzhuang6后面会再增加2个新元素:  
 {"_id":1,"name":"bill","address":[{"street":"Xingzhuang6","num":2},{"street":"Xuhui7"},{"street":"Xingzhuang7","num":2}]}  
 
-#### 14、$mul  
+#### <span id="head36">14、$mul  </span>
 
 $mul操作符用一个数字乘以一个操作符，指定一个$mul操作符，使用一下原型：  
 { $mul: { field: number } }  
@@ -473,7 +552,7 @@ $mul操作符应用到一个不存在的字段上：考虑如下的products集�
 得到的结果是：  
 { "_id" : 3, "item" : "XYZ", "price" : NumberLong(50) }  
 
-#### 15、$position  
+#### <span id="head37">15、$position  </span>
 
 $position修饰符指定使用$push操作符插入数组中的数据元素的位置，并且必须和$each一起使用；使用位置修饰符的格式如下：  
 {$push: {field: {$each: [ value1, value2, ... ],$position: num}}}  
@@ -497,7 +576,7 @@ $position修饰符指定使用$push操作符插入数组中的数据元素的位
 操作结果是：
 { "_id" : 1, "scores" : [  50,  60,  20,  30,  70,  100 ] }
 
-#### 16、$setOnInsert  
+#### <span id="head38">16、$setOnInsert  </span>
 
 如果update的更新参数upsert:true，也就是如果要更新的文档不存在的话会插入一条新的记录，$setOnInsert操作符会将指定的值赋值给指定的字段，如果要更新的文档存在那么$setOnInsert操作符不做任何处理；  
 你可以指定upsert参数在db.collection.update()和db.collection.findAndModify()方法中；  
@@ -505,17 +584,17 @@ db.collection.update(query,{ $setOnInsert: { field1: value1, ... } },{ upsert: t
 
 例子：  
 
-    db.products.update({ _id: 1 },{
-        $set: { item: "apple" },
-        $setOnInsert: { defaultQty: 100 }},
-        {upsert: true})
+db.products.update({ _id: 1 },{
+$set: { item: "apple" },
+$setOnInsert: { defaultQty: 100 }},
+{upsert: true})
 
 如果指定的集合文档不存在将会创建一个_id为1，其它的值为$set操作符和$setOnInsert操作符指定的字段和值；  
 新的集合文档是：  
 { "_id" : 1, "item" : "apple", "defaultQty" : 100 }  
 如果是用 db.collection.update()和upsert:true能够查找到指定的集合文档，Mongodb将会更新$set操作符指定的值，忽略掉$setOnInsert指定的值；  
 
-#### 17、$currentDate  
+#### <span id="head39">17、$currentDate  </span>
 
 $currentDate设置字段的值为当前时间，值为Date类型或者Timestamp时间戳类型，默认是Date类型。  
 $currentDate操作符的使用格式是：  
@@ -527,23 +606,23 @@ $currentDate操作符是只用在更新操作上，不可以用在insert操作�
 { _id: 1, status: "a", lastModified: ISODate("2013-10-02T01:11:18.965Z") }  
 如下操作更新lastModified字段为当前时间，cancellation.date字段设置为当前时间戳，并且更新status字段和cancellation.reason字段。  
 
-    db.users.update({ _id: 1 },{
-        $currentDate: {
-            lastModified: true,
-            "cancellation.date": { $type: "timestamp" }},
-        $set: {
-            status: "D",
-            "cancellation.reason": "user request"}})
+db.users.update({ _id: 1 },{
+$currentDate: {
+lastModified: true,
+"cancellation.date": { $type: "timestamp" }},
+$set: {
+status: "D",
+"cancellation.reason": "user request"}})
 
 更新的结果是：  
 {"_id" : 1,"status" : "D","lastModified" : ISODate("2014-09-17T23:25:56.314Z"),  
-   "cancellation" : {  
-      "date" : Timestamp(1410996356, 1),  
-      "reason" : "user request"}}  
+"cancellation" : {  
+"date" : Timestamp(1410996356, 1),  
+"reason" : "user request"}}  
 
-## 四、查询
+## <span id="head40"> 四、查询</span>
 
-### （一）基本查询
+### <span id="head41"> （一）基本查询</span>
 
 >db.collection.find(query, projection)
 
@@ -557,17 +636,17 @@ pretty() 方法以格式化的方式来显示所有文档。
 
 除了 find() 方法之外，还有一个 **findOne()** 方法，它只返回一个文档。  
 
-### （二）distinct去重查询
+### <span id="head42"> （二）distinct去重查询</span>
 
 distinct，查询年龄为18,并且城市不重复的数据  
 >db.test.distinct("city",{age:18})
 
-### （三）count计数查询
+### <span id="head43"> （三）count计数查询</span>
 
 count，查询年龄为18的总数  
 >db.test.find({age:18}).count()
 
-### （四）Limit、Skip、sort限制查询
+### <span id="head44"> （四）Limit、Skip、sort限制查询</span>
 
 limit()方法接受一个数字参数，该参数指定从MongoDB中读取的记录条数。  
 > db.col.find({},{"title":1,_id:0}).limit(2)
@@ -583,9 +662,9 @@ sort() 方法可以通过参数指定排序的字段，并使用 1 和 -1 来指
 
 **skip(), limilt(), sort()三个放在一起执行的时候，执行的顺序是先 sort(), 然后是 skip()，最后是显示的 limit()。**
 
-## 五、聚合
+## <span id="head45"> 五、聚合</span>
 
-### （一）aggergate()简介
+### <span id="head46"> （一）aggergate()简介</span>
 
 MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。有点类似sql语句中的 count(*)。  
 aggregate() 方法的基本语法格式如下所示：  
@@ -624,7 +703,7 @@ $sortByCount|根据指定表达式的值对传入文档进行分组，然后计�
 $currentOp|返回有关MongoDB部署的活动和/或休眠操作的信息。要运行，请使用该db.aggregate()方法。
 $listLocalSessions|列出最近在当前连接mongos或mongod实例上使用的所有活动会话 。这些会话可能尚未传播到system.sessions集合中。
 
-### （二）聚合$group表达式运算符
+### <span id="head47"> （二）聚合$group表达式运算符</span>
 
 运算符|说明
 :---|:------------
@@ -637,7 +716,7 @@ $addToSet|在结果文档中插入值到一个数组中，但不创建副本。�
 $first|根据资源文档的排序获取第一个文档数据。例如：db.mycol.aggregate([{$group : {_id : "$by_user", first_url : {$first : "$url"}}}])
 $last|根据资源文档的排序获取最后一个文档数据。例如:db.mycol.aggregate([{$group : {_id : "$by_user", last_url : {$last : "$url"}}}])
 
-### （三）其他聚合运算符
+### <span id="head48"> （三）其他聚合运算符</span>
 
 计算新的字段值时，可以应用一些字符串和算术运算符。下表列出了在聚合运算符中计算新字段值可以应用的最常用的一些运算符。
 
@@ -654,38 +733,38 @@ $substr|返回字符串的一部分。例如:hasTest：{$substr:[< string > , < 
 $toLower|将字符串转化为小写。
 $toUpper|将字符串转化为大写。
 
-### （四）聚合例子
+### <span id="head49"> （四）聚合例子</span>
 
-#### 1、$project实例
+#### <span id="head50"> 1、$project实例</span>
 
 >db.article.aggregate({ $project : {title : 1 ,author : 1}});
 这样的话结果中就只还有_id,tilte和author三个字段了，默认情况下_id字段是被包含的，如果要想不包含_id话可以这样:
 >db.article.aggregate({ $project : {_id : 0 ,title : 1 ,author : 1}});
 
-#### 2、$match实例
+#### <span id="head51"> 2、$match实例</span>
 
 $match用于获取分数大于70小于或等于90记录，然后将符合条件的记录送到下一阶段$group管道操作符进行处理。
 >db.articles.aggregate( [{ $match : { score : { $gt : 70, $lte : 90 } } },{ $group: { _id: null, count: { $sum: 1 } } }]);
 
-#### 3、$skip实例
+#### <span id="head52"> 3、$skip实例</span>
 
 经过$skip管道操作符处理后，前五个文档被"过滤"掉。
 >db.article.aggregate({ $skip : 5 });
 
-#### 4、$group实例
+#### <span id="head53"> 4、$group实例</span>
 
 db.getCollection("project_2018_2019").aggregate([
-    {"$match":{"buyer_gov":1,"bidopentime":{$gt:1546272000,$lt:1577808000},$or:[{bidstatus:"中标"},{bidstatus:"成交"},{bidstatus:"合同"}],"budget":{$lt:10000000000}}},
-    {"$group":{"_id":{"buyer_gov":"$buyer_gov"},"count":{"$sum":1},"sum1":{"$sum":"$bidamount"},"sum2":{"$sum":"$budget"}}}]).toArray();
+{"$match":{"buyer_gov":1,"bidopentime":{$gt:1546272000,$lt:1577808000},$or:[{bidstatus:"中标"},{bidstatus:"成交"},{bidstatus:"合同"}],"budget":{$lt:10000000000}}},
+{"$group":{"_id":{"buyer_gov":"$buyer_gov"},"count":{"$sum":1},"sum1":{"$sum":"$bidamount"},"sum2":{"$sum":"$budget"}}}]).toArray();
 
 最终结果仅包含buyer_gov、count、sum1、sum2。
 
-#### 5、$concat实例
+#### <span id="head54"> 5、$concat实例</span>
 
 连接符，用来连接两个或者多个字符串，仅支持在aggregate中使用。
 >{$concat:["$field1","-","$field2"]}
 
-#### 6、$add、$subtract、$multiply、$divide
+#### <span id="head55"> 6、$add、$subtract、$multiply、$divide</span>
 
 加减乘除，仅支持在aggregate中使用。
 
@@ -695,14 +774,14 @@ db.getCollection("project_2018_2019").aggregate([
 >{$divide:["$field1","$field2"]}
 
 在聚合使用时，通常和match联合使用，例如：
-    db.seoProduceAnalyse.aggregate([
-        {"$project":{"val":{"$subtract":["$a","$b"]}}},
-        {"$match":{"val":{"$lt":1}}},
-        {"$group":{"_id":1,"count":{"$sum":1}}}])
+db.seoProduceAnalyse.aggregate([
+{"$project":{"val":{"$subtract":["$a","$b"]}}},
+{"$match":{"val":{"$lt":1}}},
+{"$group":{"_id":1,"count":{"$sum":1}}}])
 
 意为：a与 b两个值减得到值val；条件是val<1，按照_id展示count的数量。
 
-#### 7、$cond条件及其if-else使用
+#### <span id="head56"> 7、$cond条件及其if-else使用</span>
 
 例1：
 { "_id" : 1, "item" : "abc1", qty: 300 }
@@ -711,13 +790,13 @@ db.getCollection("project_2018_2019").aggregate([
 
 现在我们想根据qty的值来生成新的数据（值）
 
-    db.inventory.aggregate([{$project:{
-            item: 1,
-            discount:{
-                $cond:{
-                    if:{$gte: [ "$qty", 250 ]},
-                    then: 30,
-                    else: 20 }}}}])
+db.inventory.aggregate([{$project:{
+item: 1,
+discount:{
+$cond:{
+if:{$gte: [ "$qty", 250 ]},
+then: 30,
+else: 20 }}}}])
 
 结果为：  
 { "_id" : 1, "item" : "abc1", "discount" : 30 }  
@@ -729,28 +808,28 @@ db.getCollection("project_2018_2019").aggregate([
 报表生成中使用了mongodb的$cond 及其if else语句；mongodb不支持case when语句。  
 功能：对影片观看时间统计用户数（1、十分钟以内观看记录用户；2、10-30分钟；3、30-80分钟；4、80分钟以上）；  
 
-    temp_result = self.db[Constants.action_table].aggregate([
-            {"$match":{'actionInfo.status':7}},
-            {"$group": {"_id": {"mac": '$mac',"sn": '$sn',"day_time": {"$substrBytes": ["$time", 0, 10]}},"duration": {'$sum':"$actionInfo.consumeTime"}}},
-            {"$project":{"_id": 0,"day_time": "$_id.day_time","mac":"$_id.mac","sn": "$_id.sn","duration":"$duration","discount":{
-                            "$cond": {
-                                "if": { "$lt": ['$duration', 600000]},"then": "10分钟内",
-                                "else": {
-                                        "$cond": {
-                                            "if": {  "$and": [{ "$gte": ["$duration",600000 ]}, { "$lt": ["$duration", 18000000]}]},"then": "10-30分钟",
-                                            "else": {
-                                                "$cond": {
-                                                    "if": {  "$and": [{ "$gte": ["$duration", 18000000]}, { "$lte": ["$duration", 48000000]}]},"then" : "30-80分钟",
-                                                    "else": "80分钟以上"}}}}}}}},
-            {"$out": "TotalUserAverageDailyLengthRound_temp"}]);
-    
-    self.db["TotalUserAverageDailyLengthRound_temp"].aggregate([
-        {"$group": {"_id": {"day_time": '$day_time',"discount": '$discount',}, "countUser": {'$sum': 1}}},
-        {"$project":{"_id": 0,"day_time": "$_id.day_time","discount": "$_id.discount","countUser": "$countUser"}},
-        {"$out": self.currentTable()}]);
-    return temp_result;
+temp_result = self.db[Constants.action_table].aggregate([
+{"$match":{'actionInfo.status':7}},
+{"$group": {"_id": {"mac": '$mac',"sn": '$sn',"day_time": {"$substrBytes": ["$time", 0, 10]}},"duration": {'$sum':"$actionInfo.consumeTime"}}},
+{"$project":{"_id": 0,"day_time": "$_id.day_time","mac":"$_id.mac","sn": "$_id.sn","duration":"$duration","discount":{
+"$cond": {
+"if": { "$lt": ['$duration', 600000]},"then": "10分钟内",
+"else": {
+"$cond": {
+"if": {  "$and": [{ "$gte": ["$duration",600000 ]}, { "$lt": ["$duration", 18000000]}]},"then": "10-30分钟",
+"else": {
+"$cond": {
+"if": {  "$and": [{ "$gte": ["$duration", 18000000]}, { "$lte": ["$duration", 48000000]}]},"then" : "30-80分钟",
+"else": "80分钟以上"}}}}}}}},
+{"$out": "TotalUserAverageDailyLengthRound_temp"}]);
 
-#### 8、$redact操作符的使用
+self.db["TotalUserAverageDailyLengthRound_temp"].aggregate([
+{"$group": {"_id": {"day_time": '$day_time',"discount": '$discount',}, "countUser": {'$sum': 1}}},
+{"$project":{"_id": 0,"day_time": "$_id.day_time","discount": "$_id.discount","countUser": "$countUser"}},
+{"$out": self.currentTable()}]);
+return temp_result;
+
+#### <span id="head57"> 8、$redact操作符的使用</span>
 
 根据字段所处的document结构的级别，对文档进行“修剪”，它通常和“判断语句if-else”结合使用即“$cond”。$redact可选值有3个：  
 1）$$DESCEND：包含当前document级别的所有fields。当前级别字段的内嵌文档将会被继续检测。  
@@ -759,61 +838,61 @@ db.getCollection("project_2018_2019").aggregate([
 
 例1：
 
-    {$redact:{$cond:{
-        if: { $gt: [ { $size: { $setIntersection: [ "$tags", userAccess ] } }, 0 ] },  // $setIntersection 多个数组的交集，返回数组
-        then:"$$DESCEND",  //满足条件则保留对应等级文档的内容
-        else:"$$PRUNE",  //否则剔除掉该子文档
-        }}}
+{$redact:{$cond:{
+if: { $gt: [ { $size: { $setIntersection: [ "$tags", userAccess ] } }, 0 ] },  // $setIntersection 多个数组的交集，返回数组
+then:"$$DESCEND",  //满足条件则保留对应等级文档的内容
+else:"$$PRUNE",  //否则剔除掉该子文档
+}}}
 
-    {$redact: {
-        $cond: {
-        if: { $eq: [ "$level", 5 ] },
-        then: "$$PRUNE",
-        else: "$$DESCEND"
-        }}}
+{$redact: {
+$cond: {
+if: { $eq: [ "$level", 5 ] },
+then: "$$PRUNE",
+else: "$$DESCEND"
+}}}
 
 例2：
 
 {_id: 1,tags: [ "G", "STLW" ],year: 2014,
-  subsections: [{
-      subtitle: "Section 1",
-      tags: [ "SI", "G" ],},{
-      subtitle: "Section 2",
-      tags: [ "STLW" ],},{
-      subtitle: "Section 3",
-      tags: [ "TK" ],
-      content: {
-        tags: [ "HCS" ]}}]}
+subsections: [{
+subtitle: "Section 1",
+tags: [ "SI", "G" ],},{
+subtitle: "Section 2",
+tags: [ "STLW" ],},{
+subtitle: "Section 3",
+tags: [ "TK" ],
+content: {
+tags: [ "HCS" ]}}]}
 
 对于语句：
 
-    $redact: {$cond: {
-            if: {$gt: [ { $size: { $setIntersection: [ "$tags", ["STLW","G"] ] } }, 0 ] },
-            then: "$$DESCEND",
-            else: "$$PRUNE"}}
+$redact: {$cond: {
+if: {$gt: [ { $size: { $setIntersection: [ "$tags", ["STLW","G"] ] } }, 0 ] },
+then: "$$DESCEND",
+else: "$$PRUNE"}}
 
 输出结果：  
 {"_id" : 1,"tags" : [ "G", "STLW" ],"year" : 2014,  
-  "subsections" : [{  
-      "subtitle" : "Section 1",  
-      "tags" : [ "SI", "G" ],  
-      "content" : "Section 1"},{  
-      "subtitle" : "Section 2: Analysis",  
-      "tags" : [ "STLW" ],  
-      "content" : "Section 2"}]}  
+"subsections" : [{  
+"subtitle" : "Section 1",  
+"tags" : [ "SI", "G" ],  
+"content" : "Section 1"},{  
+"subtitle" : "Section 2: Analysis",  
+"tags" : [ "STLW" ],  
+"content" : "Section 2"}]}  
 
-#### 9、字段比较
+#### <span id="head58"> 9、字段比较</span>
 
 aggregate方法查询 fields1 与 fields2字段值相同:  
 
-    db.test.aggregate([
-        {$project:{fields1:1,fields2:1,difference:{$eq:["$fields1","$fields2"]}}},
-        {$match:{difference:true}},
-        {$limit:10}]);
+db.test.aggregate([
+{$project:{fields1:1,fields2:1,difference:{$eq:["$fields1","$fields2"]}}},
+{$match:{difference:true}},
+{$limit:10}]);
 difference=true值相同 false值不相同  
 ps:由于aggregate不支持$where,所以需要用$project比较后在用$match进行条件筛选。  
 
-#### 10、时间聚合统计
+#### <span id="head59"> 10、时间聚合统计</span>
 
 例如时间字段  
 mongodb的聚合框架（aggregate）提供了很多修改器用来修改去获取IOSDate类型的字段的年、月、日、时、分、秒、等；同时mongodb也提供了相关的修改器去把IOSDate类型的时间转换为通常我们可以接受的时间格式；  
@@ -848,60 +927,60 @@ formatString：需要返回的日期式，日期格式通常为以：
 以下是案例：  
 date1Str: 转换时间格式比标准时间差了8小时，date2Str：转换时间正确。  
 
-    db.test.aggregate([{
-        $project: {timestamp: 1,
-            date1Str: {$dateToString: {format: "%Y-%m-%d %H:%M:%S:%L", date:{"$add":[new Date(0),"$timestamp"]}}},
-            date2Str: {$dateToString: {format: "%Y-%m-%d %H:%M:%S:%L", date:{"$add":[new Date(0),"$timestamp",28800000]}}}}}])
+db.test.aggregate([{
+$project: {timestamp: 1,
+date1Str: {$dateToString: {format: "%Y-%m-%d %H:%M:%S:%L", date:{"$add":[new Date(0),"$timestamp"]}}},
+date2Str: {$dateToString: {format: "%Y-%m-%d %H:%M:%S:%L", date:{"$add":[new Date(0),"$timestamp",28800000]}}}}}])
 
 "$add":[new Date(0),"$timestamp"] ，这是为了把$timestamp的值转为Date类型。  
 
-#### 11、$substr截取字符串
+#### <span id="head60"> 11、$substr截取字符串</span>
 
 $substr,$substrBytes,$substrCP是aggregate的管道操作符，$substr在版本3.4后最好使用$substrBytes。  
 $substr与$substrBytes结果相同，会将汉字的字符长度视为2，$substrCP将汉字的字符长度视为1。  
 
-    db.getCollection("a").aggregate({
-        $project:{
-            a:{$substr:['article_link这是汉字387540859',5,10]},
-            b:{$substrBytes:['article_link这是汉字387540859',5,10]},
-            c:{$substrCP:['article_link这是汉字387540859',5,10]}}})
+db.getCollection("a").aggregate({
+$project:{
+a:{$substr:['article_link这是汉字387540859',5,10]},
+b:{$substrBytes:['article_link这是汉字387540859',5,10]},
+c:{$substrCP:['article_link这是汉字387540859',5,10]}}})
 
-    结果：
-    {_id:1,a:"le_link这",b:"le_link这",c:"le_link这是汉"}
-
-<!---->
-
-    db.getCollection("a").aggregate({
-        $project:{
-            url:"$article_link",
-            a:{$substr:['$article_link',10,10]},
-            b:{$substrBytes:['$article_link',10,10]},
-            c:{$substrCP:['$article_link',10,10]}}})
-
-    结果：
-    {_id:1,url:"https://doi.org/10.13109/zptm.2019.65.1.1",a:"i.org/10.1",b:"i.org/10.1",c:"i.org/10.1"}
-
-#### 12、$lookup实例
-
-    db.user.aggregate([{
-        $lookup: { // 左连接
-            from: "order", // 关联到order表
-            localField: "uid", // user 表关联的字段
-            foreignField: "uid", // order 表关联的字段
-            as: "orders"}
+结果：
+{_id:1,a:"le_link这",b:"le_link这",c:"le_link这是汉"}
 
 <!---->
 
-    db.getCollection("prodata_18_19_zbgg").aggregate([
-        {"$lookup":{from: "project_2018_2019_all_1",localField:"company_name",foreignField:"winner",as: "prodata"}},
-        {"$match":{"prodata.buyer_gov":1,"prodata.bidopentime":{$gte:1546272000,$lt:1577808000},"province":"江西","prodata.area":{$ne:"江西"}}},
-        {"$group":{"_id":{"province":"$province"},"count":{"$sum":1}}}]).toArray();
+db.getCollection("a").aggregate({
+$project:{
+url:"$article_link",
+a:{$substr:['$article_link',10,10]},
+b:{$substrBytes:['$article_link',10,10]},
+c:{$substrCP:['$article_link',10,10]}}})
+
+结果：
+{_id:1,url:"https://doi.org/10.13109/zptm.2019.65.1.1",a:"i.org/10.1",b:"i.org/10.1",c:"i.org/10.1"}
+
+#### <span id="head61"> 12、$lookup实例</span>
+
+db.user.aggregate([{
+$lookup: { // 左连接
+from: "order", // 关联到order表
+localField: "uid", // user 表关联的字段
+foreignField: "uid", // order 表关联的字段
+as: "orders"}
+
+<!---->
+
+db.getCollection("prodata_18_19_zbgg").aggregate([
+{"$lookup":{from: "project_2018_2019_all_1",localField:"company_name",foreignField:"winner",as: "prodata"}},
+{"$match":{"prodata.buyer_gov":1,"prodata.bidopentime":{$gte:1546272000,$lt:1577808000},"province":"江西","prodata.area":{$ne:"江西"}}},
+{"$group":{"_id":{"province":"$province"},"count":{"$sum":1}}}]).toArray();
 
 表的关联查询，如果没有索引或者数据量太大，就别用了，速度太慢。  
 
-## 六、索引
+## <span id="head62"> 六、索引</span>
 
-### （一）常规索引语法
+### <span id="head63"> （一）常规索引语法</span>
 
 索引通常能够极大的提高查询的效率，特别在处理大量的数据时。索引是特殊的数据结构，存储在一个易于遍历读取的数据集合中，是对数据库表中一列或多列的值进行排序的一种结构。  
 
@@ -932,7 +1011,7 @@ weights|document|索引权重值，数值在 1 到 99,999 之间，表示该索�
 default_language|string|对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语
 language_override|string|对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.
 
-### （二）其他索引语法
+### <span id="head64"> （二）其他索引语法</span>
 
 1.查看集合索引
 >db.col.getIndexes()
@@ -946,14 +1025,14 @@ language_override|string|对于文本索引，该参数指定了包含在文档�
 4.删除集合指定索引
 >db.col.dropIndex("索引名称")
 
-### （三）高级索引
+### <span id="head65"> （三）高级索引</span>
 
 {"address": {  
-      "city": "Los Angeles",  
-      "state": "California",  
-      "pincode": "123"},  
-   "tags": ["music","cricket","blogs"],  
-   "name": "Tom Benzamin"}  
+"city": "Los Angeles",  
+"state": "California",  
+"pincode": "123"},  
+"tags": ["music","cricket","blogs"],  
+"name": "Tom Benzamin"}  
 
 以上文档包含了 address 子文档和 tags 数组。  
 
@@ -985,7 +1064,7 @@ language_override|string|对于文本索引，该参数指定了包含在文档�
 同样支持以下查询：  
 >db.users.find({"address.city":"Los Angeles","address.state":"California","address.pincode":"123"})  
 
-### （四）索引限制
+### <span id="head66"> （四）索引限制</span>
 
 额外开销  
 每个索引占据一定的存储空间，在进行插入，更新和删除操作时也需要对索引进行操作。所以，如果你很少对集合进行读取操作，建议不使用索引。  
@@ -1014,9 +1093,9 @@ language_override|string|对于文本索引，该参数指定了包含在文档�
 * 索引名的长度不能超过128个字符  
 * 一个复合索引最多可以有31个字段  
 
-## 七、高级教程与操作
+## <span id="head67"> 七、高级教程与操作</span>
 
-### （一）MongoDB关系
+### <span id="head68"> （一）MongoDB关系</span>
 
 MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间可以通过嵌入和引用来建立联系。  
 MongoDB 中的关系可以是：  
@@ -1026,45 +1105,45 @@ N: 1 (多对1)
 N: N (多对多)  
 关系型数据库有的关系，MongoDB都有。  
 
-#### 1、嵌入式关系
+#### <span id="head69"> 1、嵌入式关系</span>
 
-    {
-    "_id":ObjectId("52ffc33cd85242f436000001"),
-    "contact": "987654321",
-    "dob": "01-01-1991",
-    "name": "Tom Benzamin",
-    "address": [
-        {
-            "building": "22 A, Indiana Apt",
-            "pincode": 123456,
-            "city": "Los Angeles",
-            "state": "California"
-        },
-        {
-            "building": "170 A, Acropolis Apt",
-            "pincode": 456789,
-            "city": "Chicago",
-            "state": "Illinois"
-        }]
-    } 
+{
+"_id":ObjectId("52ffc33cd85242f436000001"),
+"contact": "987654321",
+"dob": "01-01-1991",
+"name": "Tom Benzamin",
+"address": [
+{
+"building": "22 A, Indiana Apt",
+"pincode": 123456,
+"city": "Los Angeles",
+"state": "California"
+},
+{
+"building": "170 A, Acropolis Apt",
+"pincode": 456789,
+"city": "Chicago",
+"state": "Illinois"
+}]
+} 
 
 以上数据保存在单一的文档中，可以比较容易的获取和维护数据。 你可以这样查询用户的地址：  
 >db.users.findOne({"name":"Tom Benzamin"},{"address":1})
 
 注意：这种数据结构的缺点是，如果用户和用户地址在不断增加，数据量不断变大，会影响读写性能。  
 
-#### 2、引用式关系
+#### <span id="head70"> 2、引用式关系</span>
 
-    {
-    "_id":ObjectId("52ffc33cd85242f436000001"),
-    "contact": "987654321",
-    "dob": "01-01-1991",
-    "name": "Tom Benzamin",
-    "address_ids": [
-        ObjectId("52ffc4a5d85242602e000000"),
-        ObjectId("52ffc4a5d85242602e000001")
-    ]
-    }
+{
+"_id":ObjectId("52ffc33cd85242f436000001"),
+"contact": "987654321",
+"dob": "01-01-1991",
+"name": "Tom Benzamin",
+"address_ids": [
+ObjectId("52ffc4a5d85242602e000000"),
+ObjectId("52ffc4a5d85242602e000001")
+]
+}
 
 以上实例中，用户文档的 address_ids 字段包含用户地址的对象id（ObjectId）数组。我们可以读取这些用户地址的对象id（ObjectId）来获取用户的详细地址信息。这种方法需要两次查询，第一次查询用户地址的对象id（ObjectId），第二次通过查询的id获取用户的详细地址信息。  
 
@@ -1075,7 +1154,7 @@ N: N (多对多)
 如果这一句使用了 find，那么下面一句应该改写为:  
 >var addresses = db.address.find({"_id":{"$in":result[0]["address_ids"]}})
 
-### （二）数据库引用
+### <span id="head71"> （二）数据库引用</span>
 
 DBRef的形式：  
 { $ref : , $id : , $db :  }  
@@ -1086,16 +1165,16 @@ $id：引用的id
 $db:数据库名称，可选参数  
 以下实例中用户数据文档使用了 DBRef, 字段 address：  
 
-    {
-    "_id":ObjectId("53402597d852426020000002"),
-    "address": {
-    "$ref": "address_home",
-    "$id": ObjectId("534009e4d852427820000002"),
-    "$db": "runoob"},
-    "contact": "987654321",
-    "dob": "01-01-1991",
-    "name": "Tom Benzamin"
-    }
+{
+"_id":ObjectId("53402597d852426020000002"),
+"address": {
+"$ref": "address_home",
+"$id": ObjectId("534009e4d852427820000002"),
+"$db": "runoob"},
+"contact": "987654321",
+"dob": "01-01-1991",
+"name": "Tom Benzamin"
+}
 
 address DBRef 字段指定了引用的地址文档是在 runoob 数据库下的 address_home 集合，id 为 534009e4d852427820000002。  
 以下代码中，我们通过指定 $ref 参数（address_home 集合）来查找集合中指定id的用户地址信息：  
@@ -1106,7 +1185,7 @@ address DBRef 字段指定了引用的地址文档是在 runoob 数据库下的 
 >最后一句，在 MongoDB4.0 版本是这样写：
 >db[dbRef.$ref].findOne({"_id":ObjectId(dbRef.$id)})
 
-### （三）覆盖索引查询
+### <span id="head72"> （三）覆盖索引查询</span>
 
 官方的MongoDB的文档中说明，覆盖查询是以下的查询：  
 
@@ -1133,7 +1212,7 @@ address DBRef 字段指定了引用的地址文档是在 runoob 数据库下的 
 * 所有索引字段是一个数组  
 * 所有索引字段是一个子文档  
 
-### （四）查询分析
+### <span id="head73"> （四）查询分析</span>
 
 MongoDB 查询分析可以确保我们所建立的索引是否有效，是查询语句性能分析的重要工具。  
 MongoDB 查询分析常用函数有：explain() 和 hint()。  
@@ -1147,38 +1226,38 @@ explain 操作提供了查询信息，使用索引及查询统计等。有利于
 
 以上的 explain() 查询返回如下结果：  
 
-    {
-    "cursor" : "BtreeCursor gender_1_user_name_1",
-    "isMultiKey" : false,
-    "n" : 1,
-    "nscannedObjects" : 0,
-    "nscanned" : 1,
-    "nscannedObjectsAllPlans" : 0,
-    "nscannedAllPlans" : 1,
-    "scanAndOrder" : false,
-    "indexOnly" : true,
-    "nYields" : 0,
-    "nChunkSkips" : 0,
-    "millis" : 0,
-    "indexBounds" : {
-        "gender" : [
-            [
-                "M",
-                "M"
-            ]
-        ],
-        "user_name" : [
-            [
-                {
-                "$minElement" : 1
-                },
-                {
-                "$maxElement" : 1
-                }
-            ]
-        ]
-    }
-    }
+{
+"cursor" : "BtreeCursor gender_1_user_name_1",
+"isMultiKey" : false,
+"n" : 1,
+"nscannedObjects" : 0,
+"nscanned" : 1,
+"nscannedObjectsAllPlans" : 0,
+"nscannedAllPlans" : 1,
+"scanAndOrder" : false,
+"indexOnly" : true,
+"nYields" : 0,
+"nChunkSkips" : 0,
+"millis" : 0,
+"indexBounds" : {
+"gender" : [
+[
+"M",
+"M"
+]
+],
+"user_name" : [
+[
+{
+"$minElement" : 1
+},
+{
+"$maxElement" : 1
+}
+]
+]
+}
+}
 
 现在，我们看看这个结果集的字段：  
 
@@ -1198,7 +1277,7 @@ explain 操作提供了查询信息，使用索引及查询统计等。有利于
 可以使用 explain() 函数来分析以上查询：  
 >db.users.find({gender:"M"},{user_name:1,_id:0}).hint({gender:1,user_name:1}).explain()
 
-### （五）原子操作
+### <span id="head74"> （五）原子操作</span>
 
 mongodb不支持事务，所以，在你的项目中应用时，要注意这点。无论什么设计，都不要要求mongodb保证数据的完整性。  
 但是mongodb提供了许多原子操作，比如文档的保存，修改，删除等，都是原子操作。  
@@ -1206,37 +1285,37 @@ mongodb不支持事务，所以，在你的项目中应用时，要注意这点�
 
 products 文档：
 
-    {
-    "_id":1,
-    "product_name": "Samsung S3",
-    "category": "mobiles",
-    "product_total": 5,
-    "product_available": 3,
-    "product_bought_by": [
-        {
-            "customer": "john",
-            "date": "7-Jan-2014"
-        },
-        {
-            "customer": "mark",
-            "date": "8-Jan-2014"
-        }
-    ]
-    }
+{
+"_id":1,
+"product_name": "Samsung S3",
+"category": "mobiles",
+"product_total": 5,
+"product_available": 3,
+"product_bought_by": [
+{
+"customer": "john",
+"date": "7-Jan-2014"
+},
+{
+"customer": "mark",
+"date": "8-Jan-2014"
+}
+]
+}
 
 在本文档中，我们已经嵌入客户买该产品的信息在 product_bought_by 字段中。现在，每当新客户购买的产品，我们会先检查该产品是否仍然可以使用  product_available 字段。如果是的话，我们将减少 product_available 字段的值，并在 product_bought_by 字段插入新客户的嵌入文档。此功能将使用 findAndModify 命令，因为它搜索并更新在同一个文档。  
 
-    db.products.findAndModify({ 
-    query:{_id:1,product_available:{$gt:0}}, 
-    update:{ 
-        $inc:{product_available:-1}, 
-        $push:{product_bought_by:{customer:"rob",date:"9-Jan-2014"}}}})
+db.products.findAndModify({ 
+query:{_id:1,product_available:{$gt:0}}, 
+update:{ 
+$inc:{product_available:-1}, 
+$push:{product_bought_by:{customer:"rob",date:"9-Jan-2014"}}}})
 
 **以上的意思是，当id为1的商品，available的值大于0时，将执行更新：available - 1 ,并且将product_bought_by:{customer:"rob",date:"9-Jan-2014"}}插入到文档中。**
 
 嵌入式文档并使用 findAndModify 查询的方法可以确保只有当它是提供产品的购买信息时被更新。 而整个此事务在同一个查询中的，所以是一个原子的。  
 
-### （六）ObjectId
+### <span id="head75"> （六）ObjectId</span>
 
 ObjectId 是一个12字节 BSON 类型数据，有以下格式：  
 
@@ -1273,20 +1352,20 @@ ObjectId 转换为字符串
 以上代码将返回Guid格式的字符串：  
 5349b4ddd2781d08c09890f3
 
-### （七）Map Reduce
+### <span id="head76">（七）Map Reduce</span>
 
 Map-Reduce是一种计算模型，简单的说就是将大批量的工作（数据）分解（MAP）执行，然后再将结果合并成最终结果（REDUCE）。  
 MongoDB提供的Map-Reduce非常灵活，对于大规模数据分析也相当实用。  
 
 以下是MapReduce的基本语法：  
 
-    db.collection.mapReduce(
-    function() {emit(key,value);},  //map 函数
-    function(key,values) {return reduceFunction},   //reduce 函数
-        {out: collection,
-        query: document,
-        sort: document,
-        limit: number})
+db.collection.mapReduce(
+function() {emit(key,value);},  //map 函数
+function(key,values) {return reduceFunction},   //reduce 函数
+{out: collection,
+query: document,
+sort: document,
+limit: number})
 
 使用 MapReduce 要实现两个函数 Map 函数和 Reduce 函数,Map 函数调用 emit(key, value), 遍历 collection 中所有的记录, 将 key 与 value 传递给Reduce 函数进行处理。  
 Map 函数必须调用 emit(key, value) 返回键值对。  
@@ -1302,11 +1381,11 @@ limit 发往map函数的文档数量的上限（要是没有limit，单独使用
 临时集合参数是这样写的out: { inline: 1 }  
 设置了 {inline:1} 将不会创建集合，整个 Map/Reduce 的操作将会在内存中进行。  
 注意，这个选项只有在结果集单个文档大小在16MB限制范围内时才有效。  
- db.users.mapReduce(map,reduce,{out:{inline:1}});  
+db.users.mapReduce(map,reduce,{out:{inline:1}});  
 
 更多内容见：https://www.runoob.com/mongodb/mongodb-map-reduce.html  
 
-### （八）固定集合
+### <span id="head77"> （八）固定集合</span>
 
 MongoDB 固定集合（Capped Collections）是性能出色且有着固定大小的集合，对于大小固定，我们可以想象其就像一个环形队列，当集合空间用完后，再插入的元素就会覆盖最初始的头部的元素！  
 >db.createCollection("cappedLogCollection",{capped:true,size:10000,max:1000})
@@ -1324,12 +1403,12 @@ max 是集合文档个数上线，单位是【个】
 用法1:储存日志信息  
 用法2:缓存一些少量的文档  
 
-### （九）自定义函数
+### <span id="head78"> （九）自定义函数</span>
 
 可以把自己写的js代码保存在某个地方，让MongoDB加载它，然后就可以在MongoDB的命令行里操作它们。  
 暂时用不到，不汇总了。  
 
-## 八、集合方法大全
+## <span id="head79"> 八、集合方法大全</span>
 
 方法名|描述
 :---|:---
@@ -1372,7 +1451,7 @@ db.collection.update()|修改集合中的数据
 db.collection.updateOne()|修改集合中的一条数据
 db.collection.validate()|执行对集合验证操作
 
-## 九、数据库方法大全
+## <span id="head80"> 九、数据库方法大全</span>
 
 方法名|描述
 :---|:---
@@ -1410,13 +1489,13 @@ db.shutdownServer()|关闭当前数据库运行实例或安全停止有关操作
 db.setLogLevel()|设置一个单独的日志信息级别
 db.version()|查看当前db版本
 
-## 十、Studio3T小技巧
+## <span id="head81"> 十、Studio3T小技巧</span>
 
 用Studio 3T进行聚合查询时，如果结果太多，容易显示不全。提示“type it for more”。想要查询全部结果，可以在语句后加.toArray()或.forEach(printjson)。区别是：  
 .toArray()是标准格式所有结果都在一个数组中，便于用脚本转换成csv表格文件，进一步操作。  
 .forEach(printjson)是独立的一条条结果，便于直接查看。  
 
-## 十一、忠告
+## <span id="head82"> 十一、忠告</span>
 
 * 对MongoDB的操作，尽量使用MongoDB语句，而不是用python语句，尤其是for循环，太影响效率了。  
 * MongoDB自带的语句基本能满足所有对MongoDB的操作，包括根据条件打标签。  
