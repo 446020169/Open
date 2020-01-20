@@ -160,6 +160,7 @@ $size，数组长度，查询fruit长度为3.
 
 $type操作符是基于BSON类型来检索集合中匹配的数据类型，并返回结果。  
 MongoDB 中可以使用的类型如下表所示：  
+
 类型|数字|备注
 :---|:----:|:---
 Double|1|  
@@ -183,9 +184,9 @@ Min key|255|Query with -1.
 Max key|127|  
 
 如果想获取 "col" 集合中 title 为 String 的数据，可以使用以下命令：
->db.col.find({"title" : {$type : 2}})
->或
->db.col.find({"title" : {$type : 'string'}})
+>db.col.find({"title" : {$type : 2}})  
+>或  
+>db.col.find({"title" : {$type : 'string'}})  
 
 #### 8、正则条件
 
@@ -206,13 +207,14 @@ $regex方法
 >db.collection.find( { sku: { $regex: 'abC', $options: 'i' } } );
 
 参数介绍：  
-Option ===== Description  
-参数 i ====== 忽略大小写，{<field>{$regex/pattern/i}}，设置i选项后，模式中的字母会进行大小写不敏感匹配。  
-参数 m ===== 多行匹配模式，{<field>{$regex/pattern/,$options:'m'}，m选项会更改^和$元字符的默认行为，分别使用与行的开头和结尾匹配，而不是与输入字符串的开头和结尾匹配。  
-参数 s ===== 单行匹配模式{<field>:{$regex:/pattern/,$options:'s'}，设置s选项后，会改变模式中的点号(.)元字符的默认行为，它会匹配所有字符，包括换行符(\n)，只能显式位于option选项中。  
-参数 x ====== 忽略非转义的空白字符，{<field>:{$regex:/pattern/,$options:'m'}，设置x选项后，正则表达式中的非转义的空白字符将被忽略，同时井号(#)被解释为注释的开头注，只能显式位于option选项中。  
+参数 i : 忽略大小写，{field:{$regex/pattern/i}}，设置i选项后，模式中的字母会进行大小写不敏感匹配。  
+参数 m : 多行匹配模式，{field:{$regex/pattern/,$options:'m'}，m选项会更改^和$元字符的默认行为，分别使用与行的开头和结尾匹配，而不是与输入字符串的开头和结尾匹配。  
+参数 s : 单行匹配模式{field:{$regex:/pattern/,$options:'s'}，设置s选项后，会改变模式中的点号(.)元字符的默认行为，它会匹配所有字符，包括换行符(\n)，只能显式位于option选项中。  
+参数 x : 忽略非转义的空白字符，{field:{$regex:/pattern/,$options:'m'}，设置x选项后，正则表达式中的非转义的空白字符将被忽略，同时井号(#)被解释为注释的开头注，只能显式位于option选项中。  
+
 i，m，x，s可以组合使用，例如:{name:{$regex:/j*k/,$options:"si"}}  
 在设置索引的字段上进行正则匹配可以提高查询速度，而且当正则表达式使用的是前缀表达式时，查询速度会进一步提高，例如:{name:{$regex: /^joe/}  
+
 还有一个情形是：匹配规则中使用了锚,所谓的锚就是 **^开头, $结束** ，例如：
 >db.products.find( { description: { $regex: /^S/, $options: 'm' } } )
 
@@ -220,6 +222,7 @@ i，m，x，s可以组合使用，例如:{name:{$regex:/j*k/,$options:"si"}}
 { "_id" : 100, "sku" : "abc123", "description" : "Single line description." }  
 { "_id" : 101, "sku" : "abc789", "description" : "First line\nSecond line" }  
 可以看出，第二条记录中descriptio的值包含\n换行字符，而他之所以能匹配出来就是因为添加了m 参数。  
+
 此时可以分析出m参数的使用场景：  
 应该是为了匹配字段value值中以某个字符开头(^)，或者是某个字符结束($).即便value中包含换行符(\n)也能匹配到。  
 从上例最后例子看出，m参数应该是和锚同时使用才有意思，否则直接去匹配也能匹配出来。说明m是在特殊需求下才使用的！  
@@ -230,6 +233,7 @@ i，m，x，s可以组合使用，例如:{name:{$regex:/j*k/,$options:"si"}}
 结果为：  
 { "_id" : 102, "sku" : "xyz456", "description" : "Many spaces before line" }  
 { "_id" : 103, "sku" : "xyz789", "description" :"Multiple\nline description" }  
+
 如果不加s参数时，语句为：  
 db.products.find( { description: { $regex: /m.*line/, $options: 'i' } } )  
 结果为：  
@@ -258,6 +262,7 @@ update后面第二个参数true意为按条件查出来所有记录全部更新�
 
 条件操作符，aggregate中不支持$where。  
 $where 用它可以执行任意JavaScript作为查询的一部分，这就使得查询能做（几乎）任何事情，最典型的就是比较两个文档的键的值是否相等，一定要避免使用where。因为它在速度上要比常规查询慢很多，只有走投无路才考虑，将常规查询作为前置过滤，与where组合使用可以不牺牲性能，如果可能的话，用索引根据非where子句进行过滤，where只用于对结果进行调优。  
+
 判断两个字段相等  
 >db.xxx.find({"$where":"this.filed1 == this.filed2 ", xxx:"xxx",xxx:"xxx" })
 
@@ -427,7 +432,7 @@ $each修饰符允许$addToSet操作符添加多个元素到数组字段中，$ad
 >{$bit : { field : {and : 5}}}
 >{$bit: {fields: {and|or|xor: int}}}
 
-#### $slice  
+#### 13、$slice  
 
 返回数组的一个子集合,它也可以返回指定地方的指定条数，如果数组长度不够则返回指定地方之后的所有数据。另外，除非特别声明，否则使用slice时将返回文档中的所有键，这与其他的不太一样。  
 $slice在$push中是为了限制数组的总长度，-1说明数组长度为1，-5说明数组长度为5，数组为0说明数组是空。  
@@ -438,10 +443,10 @@ $slice在$push中是为了限制数组的总长度，-1说明数组长度为1，
 运行结果，我们分析一下应该是总长度为3，由于要新增2个元素，所以最前面的两个元素会被删除，在Xingzhuang6后面会再增加2个新元素:  
 {"_id":1,"name":"bill","address":[{"street":"Xingzhuang6","num":2},{"street":"Xuhui7"},{"street":"Xingzhuang7","num":2}]}  
 
-#### 13、$mul  
+#### 14、$mul  
 
 $mul操作符用一个数字乘以一个操作符，指定一个$mul操作符，使用一下原型：  
-{ $mul: { field: <number> } }  
+{ $mul: { field: number } }  
 如果指定的字段在文档中不存在，$mul操作符创建字段并且设置值为0作为乘数；  
 
 例1：  
@@ -468,10 +473,10 @@ $mul操作符应用到一个不存在的字段上：考虑如下的products集�
 得到的结果是：  
 { "_id" : 3, "item" : "XYZ", "price" : NumberLong(50) }  
 
-#### $position  
+#### 15、$position  
 
 $position修饰符指定使用$push操作符插入数组中的数据元素的位置，并且必须和$each一起使用；使用位置修饰符的格式如下：  
-{$push: {<field>: {$each: [ <value1>, <value2>, ... ],$position: <num>}}}  
+{$push: {field: {$each: [ value1, value2, ... ],$position: num}}}  
 如果num是负数或者0插入的数据就放到数组的开始位置，如果num大于或者等于数组的长度则不对数组做任何修改直接放入到数组的最后位置。  
 
 例1：  
@@ -492,11 +497,11 @@ $position修饰符指定使用$push操作符插入数组中的数据元素的位
 操作结果是：
 { "_id" : 1, "scores" : [  50,  60,  20,  30,  70,  100 ] }
 
-#### $setOnInsert  
+#### 16、$setOnInsert  
 
 如果update的更新参数upsert:true，也就是如果要更新的文档不存在的话会插入一条新的记录，$setOnInsert操作符会将指定的值赋值给指定的字段，如果要更新的文档存在那么$setOnInsert操作符不做任何处理；  
 你可以指定upsert参数在db.collection.update()和db.collection.findAndModify()方法中；  
-db.collection.update(<query>,{ $setOnInsert: { <field1>: <value1>, ... } },{ upsert: true })  
+db.collection.update(query,{ $setOnInsert: { field1: value1, ... } },{ upsert: true })  
 
 例子：  
 
@@ -510,12 +515,12 @@ db.collection.update(<query>,{ $setOnInsert: { <field1>: <value1>, ... } },{ ups
 { "_id" : 1, "item" : "apple", "defaultQty" : 100 }  
 如果是用 db.collection.update()和upsert:true能够查找到指定的集合文档，Mongodb将会更新$set操作符指定的值，忽略掉$setOnInsert指定的值；  
 
-#### $currentDate  
+#### 17、$currentDate  
 
 $currentDate设置字段的值为当前时间，值为Date类型或者Timestamp时间戳类型，默认是Date类型。  
 $currentDate操作符的使用格式是：  
-{ $currentDate: { <field1>: <typeSpecification1>, ... } }  
-<typeSpecification>字段可以是一个boolean true类型设置当前字段是日期Date类型，或者一个文档{ $type: "timestamp" }或者{ $type: "date" }根据指定的类型设置日期，该操作是只支持小写的timestamp和小写的date。  
+{ $currentDate: { field1: typeSpecification1, ... } }  
+typeSpecification字段可以是一个boolean true类型设置当前字段是日期Date类型，或者一个文档{ $type: "timestamp" }或者{ $type: "date" }根据指定的类型设置日期，该操作是只支持小写的timestamp和小写的date。  
 $currentDate操作符是只用在更新操作上，不可以用在insert操作，更新日期类型的字段时建议使用$currentDate操作符，因为它是直接取的数据库服务端的时间，而使用new Date()设置日期取的是当前服务器上的时间，容易造成误差。  
 
 例子：  
@@ -536,9 +541,9 @@ $currentDate操作符是只用在更新操作上，不可以用在insert操作�
       "date" : Timestamp(1410996356, 1),  
       "reason" : "user request"}}  
 
-## 查询
+## 四、查询
 
-### 基本查询
+### （一）基本查询
 
 >db.collection.find(query, projection)
 
@@ -552,17 +557,17 @@ pretty() 方法以格式化的方式来显示所有文档。
 
 除了 find() 方法之外，还有一个 **findOne()** 方法，它只返回一个文档。  
 
-### distinct去重查询
+### （二）distinct去重查询
 
 distinct，查询年龄为18,并且城市不重复的数据  
 >db.test.distinct("city",{age:18})
 
-### count计数查询
+### （三）count计数查询
 
 count，查询年龄为18的总数
 >db.test.find({age:18}).count()
 
-### Limit、Skip、sort限制查询
+### （四）Limit、Skip、sort限制查询
 
 limit()方法接受一个数字参数，该参数指定从MongoDB中读取的记录条数。
 > db.col.find({},{"title":1,_id:0}).limit(2)
@@ -578,9 +583,9 @@ sort() 方法可以通过参数指定排序的字段，并使用 1 和 -1 来指
 
 **skip(), limilt(), sort()三个放在一起执行的时候，执行的顺序是先 sort(), 然后是 skip()，最后是显示的 limit()。**
 
-## 聚合
+## 五、聚合
 
-### aggergate()简介
+### （一）aggergate()简介
 
 MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。有点类似sql语句中的 count(*)。
 aggregate() 方法的基本语法格式如下所示：
@@ -598,7 +603,7 @@ $limit|限定可以传递到聚合操作的下一个管道中的文档数量。�
 $skip|指定处理聚合操作的下一个管道前跳过的一些文档
 $unwind|将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。例如{$unwind:"$myArr"}
 $group|把文档分成一组新的文档用于在管道中的下一级。新对象的字段必须在$group对象中定义。你还可以把表2中列出的分组表 达式运算符应用到该组的多个文档中。例如，使用下面的语句汇总value字段：{$group:{set_id:"$0_id",total:{$sum:"$value"}}}
-$sort| 在把文档传递给处理聚合操作的下一个管道前对它们排序。排序指定一个带有field:<sort_order>属性的对象，其中<sort_order> 为1表示升序，而-1表示降序
+$sort| 在把文档传递给处理聚合操作的下一个管道前对它们排序。排序指定一个带有field:sort_order属性的对象，其中sort_order 为1表示升序，而-1表示降序
 $sample|随机选择N条documents，语法“{$sample: {size:20}}”。
 $count|返回聚合管道此阶段的文档数量计数。
 $cond|判断用的，可以跟if then 语句。
@@ -619,7 +624,7 @@ $sortByCount|根据指定表达式的值对传入文档进行分组，然后计�
 $currentOp|返回有关MongoDB部署的活动和/或休眠操作的信息。要运行，请使用该db.aggregate()方法。
 $listLocalSessions|列出最近在当前连接mongos或mongod实例上使用的所有活动会话 。这些会话可能尚未传播到system.sessions集合中。
 
-### 聚合$group表达式运算符
+### （二）聚合$group表达式运算符
 
 运算符|说明
 :---|:------------
@@ -632,7 +637,7 @@ $addToSet|在结果文档中插入值到一个数组中，但不创建副本。�
 $first|根据资源文档的排序获取第一个文档数据。例如：db.mycol.aggregate([{$group : {_id : "$by_user", first_url : {$first : "$url"}}}])
 $last|根据资源文档的排序获取最后一个文档数据。例如:db.mycol.aggregate([{$group : {_id : "$by_user", last_url : {$last : "$url"}}}])
 
-### 其他聚合运算符
+### （三）其他聚合运算符
 
 计算新的字段值时，可以应用一些字符串和算术运算符。下表列出了在聚合运算符中计算新字段值可以应用的最常用的一些运算符。
 
@@ -649,7 +654,7 @@ $substr|返回字符串的一部分。例如:hasTest：{$substr:[< string > , < 
 $toLower|将字符串转化为小写。
 $toUpper|将字符串转化为大写。
 
-### 聚合例子
+### （四）聚合例子
 
 #### 1、$project实例
 
@@ -822,12 +827,12 @@ $week： 返回该日期是所在年的第几个星期（between 0and53）
 $hour： 返回该日期的小时部分 $minute: 返回该日期的分钟部分  
 $second: 返回该日期的秒部分（以0到59之间的数字形式返回日期的第二部分，但可以是60来计算闰秒。）  
 $millisecond：返回该日期的毫秒部分（between 0and999.）  
-$dateToString： { $dateToString: { format: <formatString>, date: <dateExpression> } }  
+$dateToString： { $dateToString: { format: formatString, date: dateExpression} }  
 
 formatString：需要返回的日期式，日期格式通常为以：  
 
 格式|说明|示例
-:---|:------------ |:--
+:---|:------------|:--
 %Y|Year (4 digits, zero padded)|0000-9999
 %m|Month (2 digits, zero padded)|01-12
 %d|Day of Month (2 digits, zero padded)|01-31
@@ -894,9 +899,9 @@ $substr与$substrBytes结果相同，会将汉字的字符长度视为2，$subst
 
 表的关联查询，如果没有索引，就别用了，速度太慢了。  
 
-## 索引
+## 六、索引
 
-### 常规索引语法
+### （一）常规索引语法
 
 索引通常能够极大的提高查询的效率，特别在处理大量的数据时。索引是特殊的数据结构，存储在一个易于遍历读取的数据集合中，是对数据库表中一列或多列的值进行排序的一种结构。  
 
@@ -913,6 +918,7 @@ createIndex() 方法中你也可以设置使用多个字段创建索引（关系
 >db.values.createIndex({open: 1, close: 1}, {background: true})  
 
 createIndex()接收可选参数，例如：background，可选参数列表如下：  
+
 Parameter|Type|Description
 :---|:------------ |:--
 background|Boolean|建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 "background" 可选参数。 "background" 默认值为false。
@@ -926,7 +932,7 @@ weights|document|索引权重值，数值在 1 到 99,999 之间，表示该索�
 default_language|string|对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语
 language_override|string|对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.
 
-### 其他索引语法
+### （二）其他索引语法
 
 1.查看集合索引
 >db.col.getIndexes()
@@ -940,7 +946,7 @@ language_override|string|对于文本索引，该参数指定了包含在文档�
 4.删除集合指定索引
 >db.col.dropIndex("索引名称")
 
-### 高级索引
+### （三）高级索引
 
 {"address": {  
       "city": "Los Angeles",  
@@ -979,7 +985,7 @@ language_override|string|对于文本索引，该参数指定了包含在文档�
 同样支持以下查询：  
 >db.users.find({"address.city":"Los Angeles","address.state":"California","address.pincode":"123"})  
 
-### 索引限制
+### （四）索引限制
 
 额外开销  
 每个索引占据一定的存储空间，在进行插入，更新和删除操作时也需要对索引进行操作。所以，如果你很少对集合进行读取操作，建议不使用索引。  
@@ -1008,19 +1014,19 @@ language_override|string|对于文本索引，该参数指定了包含在文档�
 * 索引名的长度不能超过128个字符  
 * 一个复合索引最多可以有31个字段  
 
-## 高级教程与操作
+## 七、高级教程与操作
 
-### MongoDB关系
+### （一）MongoDB关系
 
-MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间可以通过嵌入和引用来建立联系。
-MongoDB 中的关系可以是：
-1:1 (1对1)
-1: N (1对多)
-N: 1 (多对1)
-N: N (多对多)
-关系型数据库有的关系，MongoDB都有。
+MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间可以通过嵌入和引用来建立联系。  
+MongoDB 中的关系可以是：  
+1:1 (1对1)  
+1: N (1对多)  
+N: 1 (多对1)  
+N: N (多对多)  
+关系型数据库有的关系，MongoDB都有。  
 
-#### 嵌入式关系
+#### 1、嵌入式关系
 
     {
     "_id":ObjectId("52ffc33cd85242f436000001"),
@@ -1047,7 +1053,7 @@ N: N (多对多)
 
 注意：这种数据结构的缺点是，如果用户和用户地址在不断增加，数据量不断变大，会影响读写性能。
 
-#### 引用式关系
+#### 2、引用式关系
 
     {
     "_id":ObjectId("52ffc33cd85242f436000001"),
@@ -1060,25 +1066,25 @@ N: N (多对多)
     ]
     }
 
-以上实例中，用户文档的 address_ids 字段包含用户地址的对象id（ObjectId）数组。我们可以读取这些用户地址的对象id（ObjectId）来获取用户的详细地址信息。这种方法需要两次查询，第一次查询用户地址的对象id（ObjectId），第二次通过查询的id获取用户的详细地址信息。
+以上实例中，用户文档的 address_ids 字段包含用户地址的对象id（ObjectId）数组。我们可以读取这些用户地址的对象id（ObjectId）来获取用户的详细地址信息。这种方法需要两次查询，第一次查询用户地址的对象id（ObjectId），第二次通过查询的id获取用户的详细地址信息。  
 
 >var result = db.users.findOne({"name":"Tom Benzamin"},{"address_ids":1})
 >var addresses = db.address.find({"_id":{"$in":result["address_ids"]}})
 
-注意这一句中的 findOne 不能写成 find，因为 find 返回的数据类型是数组，findOne 返回的数据类型是对象。
-如果这一句使用了 find，那么下面一句应该改写为:
+注意这一句中的 findOne 不能写成 find，因为 find 返回的数据类型是数组，findOne 返回的数据类型是对象。  
+如果这一句使用了 find，那么下面一句应该改写为:  
 >var addresses = db.address.find({"_id":{"$in":result[0]["address_ids"]}})
 
-### 数据库引用
+### （二）数据库引用
 
-DBRef的形式：
-{ $ref : , $id : , $db :  }
+DBRef的形式：  
+{ $ref : , $id : , $db :  }  
 
-三个字段表示的意义为：
-$ref：集合名称
-$id：引用的id
-$db:数据库名称，可选参数
-以下实例中用户数据文档使用了 DBRef, 字段 address：
+三个字段表示的意义为：  
+$ref：集合名称  
+$id：引用的id  
+$db:数据库名称，可选参数  
+以下实例中用户数据文档使用了 DBRef, 字段 address：  
 
     {
     "_id":ObjectId("53402597d852426020000002"),
@@ -1092,7 +1098,7 @@ $db:数据库名称，可选参数
     }
 
 address DBRef 字段指定了引用的地址文档是在 runoob 数据库下的 address_home 集合，id 为 534009e4d852427820000002。  
-以下代码中，我们通过指定 $ref 参数（address_home 集合）来查找集合中指定id的用户地址信息：
+以下代码中，我们通过指定 $ref 参数（address_home 集合）来查找集合中指定id的用户地址信息：  
 >var user = db.users.findOne({"name":"Tom Benzamin"})  
 >var dbRef = user.address  
 >db[dbRef.$ref].findOne({"_id":(dbRef.$id)})  
@@ -1100,46 +1106,46 @@ address DBRef 字段指定了引用的地址文档是在 runoob 数据库下的 
 >最后一句，在 MongoDB4.0 版本是这样写：
 >db[dbRef.$ref].findOne({"_id":ObjectId(dbRef.$id)})
 
-### 覆盖索引查询
+### （三）覆盖索引查询
 
-官方的MongoDB的文档中说明，覆盖查询是以下的查询：
+官方的MongoDB的文档中说明，覆盖查询是以下的查询：  
 
-* 所有的查询字段是索引的一部分
-* 所有的查询返回字段在同一个索引中
+* 所有的查询字段是索引的一部分  
+* 所有的查询返回字段在同一个索引中  
 
-由于所有出现在查询中的字段是索引的一部分，MongoDB 无需在整个数据文档中检索匹配查询条件和返回使用相同索引的查询结果。因为索引存在于RAM中，从索引中获取数据比通过扫描文档读取数据要快得多。
+由于所有出现在查询中的字段是索引的一部分，MongoDB 无需在整个数据文档中检索匹配查询条件和返回使用相同索引的查询结果。因为索引存在于RAM中，从索引中获取数据比通过扫描文档读取数据要快得多。  
 
-方法：
-一、创建索引：
+方法：  
+1、创建索引：  
 >db.users.createIndex({gender:1,user_name:1})
 
-二、查询：
+2、查询：  
 >db.users.find({gender:"M"},{user_name:1,_id:0})
 
-上述查询，称为覆盖索引查询。MongoDB不会去数据库文件中查找。相反，它会从索引中提取数据，这是非常快速的数据查询。
-由于我们的索引中不包括 _id 字段，_id在查询中会默认返回，我们可以在MongoDB的查询结果集中排除它。
+上述查询，称为覆盖索引查询。MongoDB不会去数据库文件中查找。相反，它会从索引中提取数据，这是非常快速的数据查询。  
+由于我们的索引中不包括 _id 字段，_id在查询中会默认返回，我们可以在MongoDB的查询结果集中排除它。  
 
-下面的实例没有排除_id，查询就不会被覆盖：
->db.users.find({gender:"M"},{user_name:1})
+下面的实例没有排除_id，查询就不会被覆盖：  
+>db.users.find({gender:"M"},{user_name:1})  
 
-最后，如果是以下的查询，不能使用覆盖索引查询：
+最后，如果是以下的查询，不能使用覆盖索引查询：  
 
-* 所有索引字段是一个数组
-* 所有索引字段是一个子文档
+* 所有索引字段是一个数组  
+* 所有索引字段是一个子文档  
 
-### 查询分析
+### （四）查询分析
 
-MongoDB 查询分析可以确保我们所建立的索引是否有效，是查询语句性能分析的重要工具。
-MongoDB 查询分析常用函数有：explain() 和 hint()。
-explain 操作提供了查询信息，使用索引及查询统计等。有利于我们对索引的优化。
+MongoDB 查询分析可以确保我们所建立的索引是否有效，是查询语句性能分析的重要工具。  
+MongoDB 查询分析常用函数有：explain() 和 hint()。  
+explain 操作提供了查询信息，使用索引及查询统计等。有利于我们对索引的优化。  
 
-接下来我们在 users 集合中创建 gender 和 user_name 的索引：
+接下来我们在 users 集合中创建 gender 和 user_name 的索引：  
 >db.users.ensureIndex({gender:1,user_name:1})
 
-现在在查询语句中使用 explain ：
+现在在查询语句中使用 explain ：  
 >db.users.find({gender:"M"},{user_name:1,_id:0}).explain()
 
-以上的 explain() 查询返回如下结果：
+以上的 explain() 查询返回如下结果：  
 
     {
     "cursor" : "BtreeCursor gender_1_user_name_1",
@@ -1174,25 +1180,25 @@ explain 操作提供了查询信息，使用索引及查询统计等。有利于
     }
     }
 
-现在，我们看看这个结果集的字段：
+现在，我们看看这个结果集的字段：  
 
-* indexOnly: 字段为 true ，表示我们使用了索引。
-* cursor：因为这个查询使用了索引，MongoDB 中索引存储在B树结构中，所以这是也使用了 BtreeCursor 类型的游标。如果没有使用索引，游标的类型是 BasicCursor。这个键还会给出你所使用的索引的名称，你通过这个名称可以查看当前数据库下的system.indexes集合（系统自动创建，由于存储索引信息，这个稍微会提到）来得到索引的详细信息。
-* n：当前查询返回的文档数量。
-* nscanned/nscannedObjects：表明当前这次查询一共扫描了集合中多少个文档，我们的目的是，让这个数值和返回文档的数量越接近越好。
-* millis：当前查询所需时间，毫秒数。
-* indexBounds：当前查询具体使用的索引。
+* indexOnly: 字段为 true ，表示我们使用了索引。  
+* cursor：因为这个查询使用了索引，MongoDB 中索引存储在B树结构中，所以这是也使用了 BtreeCursor 类型的游标。如果没有使用索引，游标的类型是  BasicCursor。这个键还会给出你所使用的索引的名称，你通过这个名称可以查看当前数据库下的system.indexes集合（系统自动创建，由于存储索引信息，这个稍微会提到）来得到索引的详细信息。  
+* n：当前查询返回的文档数量。  
+* nscanned/nscannedObjects：表明当前这次查询一共扫描了集合中多少个文档，我们的目的是，让这个数值和返回文档的数量越接近越好。  
+* millis：当前查询所需时间，毫秒数。  
+* indexBounds：当前查询具体使用的索引。  
 
-使用 hint()
+使用 hint()  
 虽然MongoDB查询优化器一般工作的很不错，但是也可以使用 hint 来强制 MongoDB 使用一个指定的索引。  
 这种方法某些情形下会提升性能。 一个有索引的 collection 并且执行一个多字段的查询(一些字段已经索引了)。  
-如下查询实例指定了使用 gender 和 user_name 索引字段来查询：
+如下查询实例指定了使用 gender 和 user_name 索引字段来查询：  
 >db.users.find({gender:"M"},{user_name:1,_id:0}).hint({gender:1,user_name:1})
 
-可以使用 explain() 函数来分析以上查询：
+可以使用 explain() 函数来分析以上查询：  
 >db.users.find({gender:"M"},{user_name:1,_id:0}).hint({gender:1,user_name:1}).explain()
 
-### 原子操作
+### （五）原子操作
 
 mongodb不支持事务，所以，在你的项目中应用时，要注意这点。无论什么设计，都不要要求mongodb保证数据的完整性。  
 但是mongodb提供了许多原子操作，比如文档的保存，修改，删除等，都是原子操作。  
@@ -1218,57 +1224,56 @@ products 文档：
     ]
     }
 
-在本文档中，我们已经嵌入客户买该产品的信息在 product_bought_by 字段中。现在，每当新客户购买的产品，我们会先检查该产品是否仍然可以使用 product_available 字段。如果是的话，我们将减少 product_available 字段的值，并在 product_bought_by 字段插入新客户的嵌入文档。此功能将使用 findAndModify 命令，因为它搜索并更新在同一个文档。
+在本文档中，我们已经嵌入客户买该产品的信息在 product_bought_by 字段中。现在，每当新客户购买的产品，我们会先检查该产品是否仍然可以使用  product_available 字段。如果是的话，我们将减少 product_available 字段的值，并在 product_bought_by 字段插入新客户的嵌入文档。此功能将使用 findAndModify 命令，因为它搜索并更新在同一个文档。  
 
     db.products.findAndModify({ 
     query:{_id:1,product_available:{$gt:0}}, 
     update:{ 
         $inc:{product_available:-1}, 
-        $push:{product_bought_by:{customer:"rob",date:"9-Jan-2014"}} 
-    }    
-    })
+        $push:{product_bought_by:{customer:"rob",date:"9-Jan-2014"}}}})
+
 **以上的意思是，当id为1的商品，available的值大于0时，将执行更新：available - 1 ,并且将product_bought_by:{customer:"rob",date:"9-Jan-2014"}}插入到文档中。**
 
-嵌入式文档并使用 findAndModify 查询的方法可以确保只有当它是提供产品的购买信息时被更新。 而整个此事务在同一个查询中的，所以是一个原子的。
+嵌入式文档并使用 findAndModify 查询的方法可以确保只有当它是提供产品的购买信息时被更新。 而整个此事务在同一个查询中的，所以是一个原子的。  
 
-### ObjectId
+### （六）ObjectId
 
-ObjectId 是一个12字节 BSON 类型数据，有以下格式：
+ObjectId 是一个12字节 BSON 类型数据，有以下格式：  
 
-* 前4个字节表示时间戳
-* 接下来的3个字节是机器标识码
-* 紧接的两个字节由进程id组成（PID）
-* 最后三个字节是随机数。
+* 前4个字节表示时间戳  
+* 接下来的3个字节是机器标识码  
+* 紧接的两个字节由进程id组成（PID）  
+* 最后三个字节是随机数。  
 
-MongoDB中存储的文档必须有一个"_id"键。这个键的值可以是任何类型的，默认是个ObjectId对象。
-在一个集合里面，每个文档都有唯一的"_id"值，来确保集合里面每个文档都能被唯一标识。
-MongoDB采用ObjectId，而不是其他比较常规的做法（比如自动增加的主键）的主要原因，因为在多个 服务器上同步自动增加主键值既费力还费时。
+MongoDB中存储的文档必须有一个"_id"键。这个键的值可以是任何类型的，默认是个ObjectId对象。  
+在一个集合里面，每个文档都有唯一的"_id"值，来确保集合里面每个文档都能被唯一标识。  
+MongoDB采用ObjectId，而不是其他比较常规的做法（比如自动增加的主键）的主要原因，因为在多个 服务器上同步自动增加主键值既费力还费时。  
 
-创建新的ObjectId
-使用以下代码生成新的ObjectId：
+创建新的ObjectId  
+使用以下代码生成新的ObjectId：  
 >newObjectId = ObjectId()
 
-上面的语句返回以下唯一生成的id：
-ObjectId("5349b4ddd2781d08c09890f3")
+上面的语句返回以下唯一生成的id：  
+ObjectId("5349b4ddd2781d08c09890f3")  
 
-你也可以使用生成的id来取代MongoDB自动生成的ObjectId：
+你也可以使用生成的id来取代MongoDB自动生成的ObjectId：  
 >myObjectId = ObjectId("5349b4ddd2781d08c09890f4")
 
-创建文档的时间戳
-由于 ObjectId 中存储了 4 个字节的时间戳，所以你不需要为你的文档保存时间戳字段，你可以通过 getTimestamp 函数来获取文档的创建时间:
+创建文档的时间戳  
+由于 ObjectId 中存储了 4 个字节的时间戳，所以你不需要为你的文档保存时间戳字段，你可以通过 getTimestamp 函数来获取文档的创建时间:  
 >ObjectId("5349b4ddd2781d08c09890f4").getTimestamp()
 
-以上代码将返回 ISO 格式的文档创建时间：
-ISODate("2014-04-12T21:49:17Z")
+以上代码将返回 ISO 格式的文档创建时间：  
+ISODate("2014-04-12T21:49:17Z")  
 
-ObjectId 转换为字符串
-在某些情况下，您可能需要将ObjectId转换为字符串格式。你可以使用下面的代码：
+ObjectId 转换为字符串  
+在某些情况下，您可能需要将ObjectId转换为字符串格式。你可以使用下面的代码：  
 >new ObjectId().str
 
-以上代码将返回Guid格式的字符串：：
+以上代码将返回Guid格式的字符串：  
 5349b4ddd2781d08c09890f3
 
-### Map Reduce
+### （七）Map Reduce
 
 Map-Reduce是一种计算模型，简单的说就是将大批量的工作（数据）分解（MAP）执行，然后再将结果合并成最终结果（REDUCE）。  
 MongoDB提供的Map-Reduce非常灵活，对于大规模数据分析也相当实用。  
@@ -1301,30 +1306,30 @@ limit 发往map函数的文档数量的上限（要是没有limit，单独使用
 
 更多内容见：https://www.runoob.com/mongodb/mongodb-map-reduce.html  
 
-### 固定集合
+### （八）固定集合
 
-MongoDB 固定集合（Capped Collections）是性能出色且有着固定大小的集合，对于大小固定，我们可以想象其就像一个环形队列，当集合空间用完后，再插入的元素就会覆盖最初始的头部的元素！
+MongoDB 固定集合（Capped Collections）是性能出色且有着固定大小的集合，对于大小固定，我们可以想象其就像一个环形队列，当集合空间用完后，再插入的元素就会覆盖最初始的头部的元素！  
 >db.createCollection("cappedLogCollection",{capped:true,size:10000,max:1000})
 
-size 是整个集合空间大小，单位为【KB】
-max 是集合文档个数上线，单位是【个】
-如果空间大小到达上限，则插入下一个文档时，会覆盖第一个文档；如果文档个数到达上限，同样插入下一个文档时，会覆盖第一个文档。两个参数上限判断取的是【与】的逻辑。
+size 是整个集合空间大小，单位为【KB】  
+max 是集合文档个数上线，单位是【个】  
+如果空间大小到达上限，则插入下一个文档时，会覆盖第一个文档；如果文档个数到达上限，同样插入下一个文档时，会覆盖第一个文档。两个参数上限判断取的是【与】的逻辑。  
 
-属性
-属性1:对固定集合进行插入速度极快
-属性2:按照插入顺序的查询输出速度极快
-属性3:能够在插入最新数据时,淘汰最早的数据
+属性  
+属性1:对固定集合进行插入速度极快  
+属性2:按照插入顺序的查询输出速度极快  
+属性3:能够在插入最新数据时,淘汰最早的数据  
 
-用法
-用法1:储存日志信息
-用法2:缓存一些少量的文档
+用法  
+用法1:储存日志信息  
+用法2:缓存一些少量的文档  
 
-### 自定义函数
+### （九）自定义函数
 
-可以把自己写的js代码保存在某个地方，让MongoDB加载它，然后就可以在MongoDB的命令行里操作它们。
-暂时用不到，不汇总了。
+可以把自己写的js代码保存在某个地方，让MongoDB加载它，然后就可以在MongoDB的命令行里操作它们。  
+暂时用不到，不汇总了。  
 
-## 集合方法大全
+## 八、集合方法大全
 
 方法名|描述
 :---|:---
@@ -1367,7 +1372,7 @@ db.collection.update()|修改集合中的数据
 db.collection.updateOne()|修改集合中的一条数据
 db.collection.validate()|执行对集合验证操作
 
-## 数据库方法大全
+## 九、数据库方法大全
 
 方法名|描述
 :---|:---
@@ -1405,13 +1410,13 @@ db.shutdownServer()|关闭当前数据库运行实例或安全停止有关操作
 db.setLogLevel()|设置一个单独的日志信息级别
 db.version()|查看当前db版本
 
-## Studio3T小技巧
+## 十、Studio3T小技巧
 
 用Studio 3T进行聚合查询时，如果结果太多，容易显示不全。提示“type it for more”。想要查询全部结果，可以在语句后加.toArray()或.forEach(printjson)。区别是：
 .toArray()是标准格式所有结果都在一个数组中，便于用脚本转换成csv表格文件，进一步操作。
 .forEach(printjson)是独立的一条条结果，便于直接查看。
 
-## 忠告
+## 十一、忠告
 
 * 对MongoDB的操作，尽量使用MongoDB语句，而不是用python语句，尤其是for循环，太影响效率了。
 * MongoDB自带的语句基本能满足所有对MongoDB的操作，包括根据条件打标签。
