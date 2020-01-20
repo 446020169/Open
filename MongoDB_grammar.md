@@ -958,7 +958,7 @@ b:{$substrBytes:['$article_link',10,10]},
 c:{$substrCP:['$article_link',10,10]}}})
 
 结果：
-{_id:1,url:"https://doi.org/10.13109/zptm.2019.65.1.1",a:"i.org/10.1",b:"i.org/10.1",c:"i.org/10.1"}
+{_id:1,url:"https:aadoi.org/10.13109/zptm.2019.65.1.1",a:"i.org/10.1",b:"i.org/10.1",c:"i.org/10.1"}
 
 #### <span id="head61"> 12、$lookup实例</span>
 
