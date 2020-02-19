@@ -129,15 +129,7 @@ remove()方法并不会真正释放空间，需要继续执行db.repairDatabase(
 
 update() 方法用于更新已存在的文档。语法格式如下：
 
-db.collection.update(
-<query>,
-<update>,
-{
-upsert: <boolean>,
-multi: <boolean>,
-writeConcern: <document>
-}
-)
+db.collection.update(query,update,{upsert: boolean,multi: boolean,writeConcern: document})
 
 query : update的查询条件，类似sql update查询内where后面的。  
 update : update的对象和一些更新的操作符（如$,$inc...）等，也可以理解为sql update查询内set后面的。  
