@@ -1,5 +1,5 @@
 <p align = "right"> :man_student: :handshake: :man_student:  &emsp; :pray: &emsp; :point_up_2: :heavy_plus_sign: :star: </p>  
-
+ 
 # <span id="head1"> MongoDB常用语句汇总</span>
 
 - [ MongoDB常用语句汇总](#head1)
