@@ -1,6 +1,6 @@
 <p align = "right"> :man_student: :handshake: :man_student:  &emsp; :pray: &emsp; :point_up_2: :heavy_plus_sign: :star: </p>  
 
-# He's not a Data Scientist.
+
 
 #### 文件(夹)介绍：
 
@@ -12,41 +12,6 @@
 &emsp;
 
 &emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
-&emsp;
-
 &emsp;
 
 
